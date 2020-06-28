@@ -1,5 +1,5 @@
 img {
-  margin-right: 9px;
+  margin-right: 0.5em;
   background-color: white;
 }
 
@@ -8,11 +8,18 @@ img {
 }
 
 #points {
-  background-color: red;
-  color: white;
-  position: fixed;
-  right: 1em;
-  border-radius: 80%;
+  background-color: whitesmoke;
+  color: grey;
+  border: 1px solid grey;
+  position: absolute;
+  right: 1.1em;
+  bottom: 0.7em;
+  outline: none;
+  transition: background-color 250ms, color 250ms;
+}
+#points:hover {
+  background-color: grey;
+  color: whitesmoke;
 }
 
 footer {

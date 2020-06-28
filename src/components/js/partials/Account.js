@@ -5,17 +5,17 @@ const Account = (props) => {
   if (props.loggedIn) {
     return (
       <div id="account" className="w-50 p-sm-2 bg-white shadow">
-        Logged in as {props.email}
-        <span id="points" className="p-sm-1">
+        {props.email}
+        <button id="points" className="p-sm-1 rounded-circle">
           {props.points}
-        </span>
+        </button>
       </div>
     );
   }
   return (
-    <div id="account" className="w-50 p-sm-2 bg-white shadow">
-      <a href="/login">Log in</a>
-    </div>
+    <button id="account" className="w-50 p-sm-2 bg-white shadow border-0">
+      Log in
+    </button>
   );
 };
 
