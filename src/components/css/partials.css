@@ -3,6 +3,18 @@ img {
   background-color: white;
 }
 
+#account {
+  color: grey;
+}
+
+#points {
+  background-color: red;
+  color: white;
+  position: fixed;
+  right: 1em;
+  border-radius: 80%;
+}
+
 footer {
   position: absolute;
   bottom: 0;
