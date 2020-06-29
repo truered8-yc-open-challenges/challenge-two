@@ -1,0 +1,124 @@
+#loginbody,
+#signupbody {
+  position: relative;
+  margin-top: 185px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1400px;
+  height: 550px;
+
+  box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logintab {
+  position: relative;
+  margin-left: 300px;
+  width: 130px;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 64px;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+.signuptab {
+  position: absolute;
+  left: 710px;
+  width: 150px;
+  top: 0px;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 64px;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+.horizontal-line {
+  margin-top: 1px;
+  margin-left: 200px;
+  height: 1px;
+  background-color: black;
+  width: 300px;
+}
+.horizontal-line2 {
+  margin-top: 1px;
+  margin-left: 610px;
+  height: 1px;
+  background-color: black;
+  width: 300px;
+}
+
+.signuplabel-f {
+  margin-left: 50px;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30.4054px;
+  line-height: 39px;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+.signuplabel-l {
+  margin-left: 420px;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30.4054px;
+  line-height: 39px;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+}
+.signupinput-s {
+  position: relative;
+  width: 500px;
+  height: 50px;
+  margin-left: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.signupinput-l {
+  position: relative;
+  width: 1040px;
+  height: 50px;
+  margin-left: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.enterbutton {
+  position: relative;
+  width: 800px;
+  height: 50px;
+  margin-left: 150px;
+  background: #333333;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.enterbutton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.enterbutton p {
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 33.0909px;
+  line-height: 42px;
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  color: #ffffff;
+}
