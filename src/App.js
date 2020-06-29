@@ -1,9 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/js/partials/Header";
 import Footer from "./components/js/partials/Footer";
 import Login from "./components/js/Login";
 import Store from "./components/js/Store";
+
+import * as ROUTES from "./constants/routes";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -13,14 +15,10 @@ function App(props) {
     <div className="bg-gradient-1">
       <Router>
         <Header />
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/">
-            <Store />
-          </Route>
-        </Switch>
+
+        <Route exact path={ROUTES.STORE} component={Store} />
+        <Route path={ROUTES.LOGIN} component={Login} />
+
         <Footer />
       </Router>
     </div>
