@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Store.css";
+import Promotion from "./store/Promotion";
+
+const getRandomElement = (list) => {
+  return list[Math.floor(Math.random() * list.length)];
+};
+
+const getPromotion = async () => {
+  const promotionsJson = await fetch(
+    "https://api.youthcomputing.ca/shop/promotions"
+  ).then((response) => response.json());
+  return (
+    <Promotion promotion={getRandomElement(promotionsJson["promotions"])} />
+  );
+};
 
 const Store = () => {
-  return <div id="store">Insert store here.</div>;
+  const [promotion, _setPromotion] = useState(null);
+  if (!promotion)
+    getPromotion().then((response) => {
+      _setPromotion(response);
+    });
+  return <div id="store">{promotion}</div>;
 };
 
 export default Store;
