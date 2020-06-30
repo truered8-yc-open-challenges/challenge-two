@@ -1,16 +1,17 @@
 #loginbody,
 #signupbody {
   position: absolute;
-  top: 20%;
+  top: 15%;
   width: 60%;
   height: auto;
   left: 20%;
-  box-shadow: 0.2604vw 0px 0.2604vw 0.2604vw rgba(0, 0, 0, 0.25);
+  box-shadow: 0.2604vw 0vw 0.2604vw 0.2604vw rgba(0, 0, 0, 0.25);
 }
 
 .logintab {
   position: relative;
   left: 28.75%;
+  margin-top: 1%;
   font-family: Abel;
   font-style: normal;
   font-weight: normal;
@@ -23,7 +24,7 @@
 .signuptab {
   position: absolute;
   left: 59%;
-  top: 0%;
+  top: 1%;
   font-family: Abel;
   font-style: normal;
   font-weight: normal;
@@ -34,6 +35,7 @@
   color: #000000;
 }
 .horizontal-line {
+  position: relative;
   margin-top: 0.0651vw;
   margin-left: 24%;
   height: 0.0651vw;
@@ -41,7 +43,8 @@
   width: 20%;
 }
 .horizontal-line2 {
-  margin-top: 0.0651vw;
+  position: relative;
+  margin-top: -0.0651vw;
   margin-left: 56%;
   height: 0.0651vw;
   background-color: black;
@@ -49,7 +52,7 @@
 }
 
 .signuplabel-f {
-  margin-top: -1%;
+  margin-top: 2%;
   margin-left: 8%;
   font-family: Abel;
   font-style: normal;
@@ -61,8 +64,9 @@
   color: #000000;
 }
 .signuplabel-l {
-  margin-top: -1%;
+  margin-top: 2%;
   margin-left: 35%;
+
   font-family: Abel;
   font-style: normal;
   font-weight: normal;
@@ -76,6 +80,8 @@
   position: relative;
   width: 40%;
   height: 2.3vw;
+  padding: 0.5vw;
+  margin-top: 2%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
@@ -87,19 +93,31 @@
   position: relative;
   width: 86.6%;
   height: 2.3vw;
+  margin-top: 2%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
   border-radius: 0.65vw;
 }
+input::placeholder {
+  position: relative;
+  font-family: Chivo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.86vw;
+  line-height: 1vw;
+  letter-spacing: -0.015em;
 
+  color: rgba(0, 0, 0, 0.3);
+}
 .enterbtn {
   position: relative;
   width: 70%;
   height: 2.3vw;
   margin-left: 15%;
-  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   background: #333333;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
@@ -145,16 +163,12 @@
   letter-spacing: -0.015em;
   position: relative;
   margin-left: 41%;
+  margin-bottom: -2%;
   opacity: 0.5;
   z-index: 2;
 }
 
-.show:hover {
-  color: #fff;
-  cursor: pointer;
-  opacity: 1;
-}
-
+.show:hover,
 .show2:hover {
   color: #222c6a;
   cursor: pointer;

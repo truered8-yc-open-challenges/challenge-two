@@ -70,8 +70,6 @@ const Login = () => {
             name="pwd2signup"
           ></input>
           <span class="show">Show </span> <span class="show2">Show </span>
-          <br></br>
-          <br></br>
           <button type="button" className="enterbtn">
             <p>Sign Up!</p>
           </button>
