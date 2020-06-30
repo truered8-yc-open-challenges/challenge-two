@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Store.css";
 import Promotion from "./store/Promotion";
 
@@ -17,10 +17,10 @@ const getPromotion = async () => {
 
 const Store = () => {
   const [promotion, _setPromotion] = useState(null);
-  if (!promotion)
+  useEffect(() =>
     getPromotion().then((response) => {
       _setPromotion(response);
-    });
+    }), []);
   return <div id="store">{promotion}</div>;
 };
 
