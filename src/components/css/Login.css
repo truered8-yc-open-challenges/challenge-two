@@ -49,7 +49,7 @@
 }
 
 .signuplabel-f {
-  margin-top: -4%;
+  margin-top: -1%;
   margin-left: 8%;
   font-family: Abel;
   font-style: normal;
@@ -61,7 +61,7 @@
   color: #000000;
 }
 .signuplabel-l {
-  margin-top: -4%;
+  margin-top: -1%;
   margin-left: 35%;
   font-family: Abel;
   font-style: normal;
@@ -99,6 +99,7 @@
   width: 70%;
   height: 2.3vw;
   margin-left: 15%;
+  margin-bottom: 2%;
   background: #333333;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
@@ -129,9 +130,8 @@
   font-size: 1.5vw;
   line-height: 1.8vw;
   letter-spacing: -0.015em;
-  position: absolute;
-  top: 78.5%;
-  left: 39%;
+  position: relative;
+  margin-left: -53%;
   opacity: 0.5;
   z-index: 2;
 }
@@ -143,14 +143,18 @@
   font-size: 1.5vw;
   line-height: 1.8vw;
   letter-spacing: -0.015em;
-  position: absolute;
-  top: 78.5%;
-  left: 86%;
+  position: relative;
+  margin-left: 41%;
   opacity: 0.5;
   z-index: 2;
 }
 
-.show:hover,
+.show:hover {
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+}
+
 .show2:hover {
   color: #222c6a;
   cursor: pointer;

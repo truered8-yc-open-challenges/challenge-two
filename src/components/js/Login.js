@@ -58,7 +58,7 @@ const Login = () => {
           <input
             type="password"
             id="pwdsignup"
-            placeholder="  Enter password again here..."
+            placeholder="  Enter password here..."
             className="signupinput-s"
             name="pwdsignup"
           ></input>
