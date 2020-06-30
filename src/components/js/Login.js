@@ -69,7 +69,8 @@ const Login = () => {
             className="signupinput-s"
             name="pwd2signup"
           ></input>
-          <span class="show">Show </span> <span class="show2">Show </span>
+          <span className="show">Show </span>{" "}
+          <span className="show2">Show </span>
           <button type="button" className="enterbtn">
             <p>Sign Up!</p>
           </button>
