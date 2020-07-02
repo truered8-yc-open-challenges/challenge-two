@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/js/partials/Header";
 import Footer from "./components/js/partials/Footer";
-import Login from "./components/js/Login";
+import Signup from "./components/js/Signup";
 import Store from "./components/js/Store";
 
 import * as ROUTES from "./constants/routes";
@@ -17,7 +17,7 @@ function App(props) {
         <Header />
 
         <Route exact path={ROUTES.STORE} component={Store} />
-        <Route path={ROUTES.LOGIN} component={Login} />
+        <Route path={ROUTES.SIGNUP} component={Signup} />
 
         <Footer />
       </Router>
