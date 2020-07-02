@@ -26,6 +26,7 @@ const Header = () => {
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/signup">Sign Up</Nav.Link>
         </Nav>
         <Form inline className="w-50">
           <FormControl
