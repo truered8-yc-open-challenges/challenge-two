@@ -4,7 +4,7 @@ import "../../css/partials.css";
 const Account = (props) => {
   if (props.loggedIn) {
     return (
-      <div id="account" className="w-50 p-sm-2 bg-white shadow">
+      <div id="account" className="w-25 p-sm-2 bg-white shadow">
         {props.email}
         <button id="points" className="p-sm-1 rounded-circle">
           {props.points}
@@ -13,7 +13,7 @@ const Account = (props) => {
     );
   }
   return (
-    <button id="account" className="w-50 p-sm-2 bg-white shadow border-0">
+    <button id="account" className="w-25 p-sm-2 bg-white shadow border-0">
       Log in
     </button>
   );
