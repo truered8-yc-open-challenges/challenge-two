@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Login.css";
 import Container from "react-bootstrap/Container";
 
 const Login = () => {
+  const [showPassword, _setShowPassword] = useState(false);
+  const [showConfirm, _setShowConfirm] = useState(false);
+  const _toggleShowPassword = () => {
+    _setShowPassword(!showPassword);
+  };
+  const _toggleShowConfirm = () => {
+    _setShowConfirm(!showConfirm);
+  };
   return (
     <Container>
       <div id="signupbody">
@@ -56,21 +64,25 @@ const Login = () => {
           </label>
           <br></br>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="pwdsignup"
             placeholder="  Enter password here..."
             className="signupinput-s"
             name="pwdsignup"
           ></input>
           <input
-            type="text"
+            type={showConfirm ? "text" : "password"}
             id="pwd2signup"
             placeholder="  Enter password again here..."
             className="signupinput-s"
             name="pwd2signup"
           ></input>
-          <span className="show">Show </span>{" "}
-          <span className="show2">Show </span>
+          <span onClick={_toggleShowPassword} className="show">
+            {showPassword ? "Hide" : "Show"}
+          </span>
+          <span onClick={_toggleShowConfirm} className="show2">
+            {showConfirm ? "Hide" : "Show"}
+          </span>
           <button type="button" className="enterbtn">
             <p>Sign Up!</p>
           </button>
