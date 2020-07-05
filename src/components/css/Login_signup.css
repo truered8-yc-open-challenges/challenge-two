@@ -51,7 +51,7 @@
   width: 20%;
 }
 
-.signuplabel-f {
+.accountlabel-f {
   margin-top: 2%;
   margin-left: 8%;
   font-family: Abel;
@@ -63,7 +63,7 @@
 
   color: #000000;
 }
-.signuplabel-l {
+.accountlabel-l {
   margin-top: 2%;
   margin-left: 35%;
 
@@ -76,7 +76,7 @@
 
   color: #000000;
 }
-.signupinput-s {
+.accountinput-s {
   position: relative;
   width: 40%;
   height: 2.3vw;
@@ -89,7 +89,7 @@
   border-radius: 0.65vw;
 }
 
-.signupinput-l {
+.accountinput-l {
   position: relative;
   width: 86.6%;
   height: 2.3vw;
@@ -143,9 +143,9 @@ input::placeholder {
 
   color: #ffffff;
 }
-
 .show,
-.show2 {
+.show2,
+.show3 {
   cursor: pointer;
   font-family: Abel;
   font-style: normal;
@@ -172,8 +172,16 @@ input::placeholder {
   width: 6%;
   display: inline-block;
 }
+.show3 {
+  position: relative;
+  margin-left: -6%;
+  width: 6%;
+  display: inline-block;
+  margin-bottom: -2%;
+}
 .show:hover,
-.show2:hover {
+.show2:hover,
+.show3:hover {
   color: #222c6a;
   opacity: 1;
 }

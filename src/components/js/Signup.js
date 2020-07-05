@@ -59,10 +59,10 @@ const Signup = () => {
         <div className="horizontal-line2"></div>
         <br></br>
         <form>
-          <label for="fnamesignup" className="signuplabel-f">
+          <label for="fnamesignup" className="accountlabel-f">
             First name:
           </label>
-          <label for="lnamesignup" className="signuplabel-l">
+          <label for="lnamesignup" className="accountlabel-l">
             Last name:
           </label>
           <br></br>
@@ -72,19 +72,19 @@ const Signup = () => {
             value={firstName}
             onChange={(event) => _setFirstName(event.target.value)}
             placeholder="  Enter first name here..."
-            className="signupinput-s"
+            className="accountinput-s"
             name="fnamesignup"
           ></input>
           <input
             type="text"
             id="lnamesignup"
             placeholder="  Enter last name here..."
-            className="signupinput-s"
+            className="accountinput-s"
             name="lnamesignup"
           ></input>
           <br></br>
           <br></br>
-          <label for="emailsignup" className="signuplabel-f">
+          <label for="emailsignup" className="accountlabel-f">
             Email:
           </label>
           <br></br>
@@ -94,15 +94,15 @@ const Signup = () => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="signupinput-l"
+            className="accountinput-l"
             name="emailsignup"
           ></input>
           <br></br>
           <br></br>
-          <label for="pwdsignup" className="signuplabel-f">
+          <label for="pwdsignup" className="accountlabel-f">
             Password:
           </label>
-          <label for="pwd2signup" className="signuplabel-l">
+          <label for="pwd2signup" className="accountlabel-l">
             Confirm Password:
           </label>
           <br></br>
@@ -112,7 +112,7 @@ const Signup = () => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="signupinput-s"
+            className="accountinput-s"
             name="pwdsignup"
           ></input>
           <input
@@ -121,7 +121,7 @@ const Signup = () => {
             value={confirm}
             onChange={(event) => _setConfirm(event.target.value)}
             placeholder="  Enter password again here..."
-            className="signupinput-s"
+            className="accountinput-s"
             name="pwd2signup"
           ></input>
           <span onClick={_toggleShowPassword} className="show">
