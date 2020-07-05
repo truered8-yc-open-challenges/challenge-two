@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import "../css/Login_signup.css";
+import React, { useContext, useState } from "react";
+import FirebaseContext from "../../contexts/FirebaseContext";
 import Container from "react-bootstrap/Container";
+import "../css/Login.css";
 
-const Login = () => {
+const Signup = () => {
   const [showPassword, _setShowPassword] = useState(false);
   const [showConfirm, _setShowConfirm] = useState(false);
   const _toggleShowPassword = () => {
@@ -11,6 +12,44 @@ const Login = () => {
   const _toggleShowConfirm = () => {
     _setShowConfirm(!showConfirm);
   };
+
+  const { auth } = useContext(FirebaseContext);
+  const [firstName, _setFirstName] = useState("");
+  const [email, _setEmail] = useState("");
+  const [password, _setPassword] = useState("");
+  const [confirm, _setConfirm] = useState("");
+
+  const [errorMessage, _setErrorMessage] = useState(null);
+
+  const isValid = () => {
+    return (
+      password === confirm &&
+      firstName !== "" &&
+      email !== "" &&
+      password !== ""
+    );
+  };
+
+  const onSubmit = () => {
+    if (isValid()) {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((authUser) => {
+          fetch("https://api.youthcomputing.ca/shop/new-user", {
+            method: "PUT",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+              userId: authUser.user.id,
+              userName: firstName,
+            }),
+          });
+        })
+        .catch((error) => {
+          _setErrorMessage(error.message);
+        });
+    }
+  };
+
   return (
     <Container>
       <div id="signupbody">
@@ -30,6 +69,8 @@ const Login = () => {
           <input
             type="text"
             id="fnamesignup"
+            value={firstName}
+            onChange={(event) => _setFirstName(event.target.value)}
             placeholder="  Enter first name here..."
             className="signupinput-s"
             name="fnamesignup"
@@ -50,6 +91,8 @@ const Login = () => {
           <input
             type="text"
             id="emailsignup"
+            value={email}
+            onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
             className="signupinput-l"
             name="emailsignup"
@@ -66,6 +109,8 @@ const Login = () => {
           <input
             type={showPassword ? "text" : "password"}
             id="pwdsignup"
+            value={password}
+            onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
             className="signupinput-s"
             name="pwdsignup"
@@ -73,6 +118,8 @@ const Login = () => {
           <input
             type={showConfirm ? "text" : "password"}
             id="pwd2signup"
+            value={confirm}
+            onChange={(event) => _setConfirm(event.target.value)}
             placeholder="  Enter password again here..."
             className="signupinput-s"
             name="pwd2signup"
@@ -83,13 +130,21 @@ const Login = () => {
           <span onClick={_toggleShowConfirm} className="show2">
             {showConfirm ? "Hide" : "Show"}
           </span>
-          <button type="button" className="enterbtn">
+          <button
+            onClick={onSubmit}
+            disabled={!isValid()}
+            type="button"
+            className="enterbtn"
+          >
             <p>Sign Up!</p>
           </button>
         </form>
+        {errorMessage && (
+          <div className="error-message">Error: {errorMessage}</div>
+        )}
       </div>
     </Container>
   );
 };
 
-export default Login;
+export default Signup;

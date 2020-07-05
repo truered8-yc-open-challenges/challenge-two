@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -11,14 +11,4 @@ const firebaseAuthConfig = {
 firebase.initializeApp(firebaseAuthConfig);
 const auth = firebase.auth();
 
-const FirebaseContext = createContext();
-
-const FirebaseContextProvider = (props) => {
-  return (
-    <FirebaseContext.Provider value={{ auth }}>
-      {props.children}
-    </FirebaseContext.Provider>
-  );
-};
-
-export default FirebaseContextProvider;
+export default createContext({ auth });
