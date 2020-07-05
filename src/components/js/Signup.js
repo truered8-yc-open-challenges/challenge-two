@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import FirebaseContext from "../../contexts/FirebaseContext";
 import Container from "react-bootstrap/Container";
-import "../css/Login.css";
+import "../css/Login_signup.css";
 
 const Signup = () => {
   const [showPassword, _setShowPassword] = useState(false);
