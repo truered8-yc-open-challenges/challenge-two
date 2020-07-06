@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
+
 import "../../css/partials.css";
 
 const Account = (props) => {
-  if (props.loggedIn) {
+  const { userData } = useContext(UserContext);
+
+  if (userData) {
     return (
       <div id="account" className="w-25 p-sm-2 bg-white shadow">
-        {props.email}
+        Hi {userData["name"]}!
         <button id="points" className="p-sm-1 rounded-circle">
-          {props.points}
+          {userData["points"]}
         </button>
       </div>
     );
   }
   return (
-    <button id="account" className="w-25 p-sm-2 bg-white shadow border-0">
+    <a
+      href="/login"
+      id="account"
+      className="w-25 p-sm-2 bg-white shadow border-0"
+    >
       Log in
-    </button>
+    </a>
   );
 };
 

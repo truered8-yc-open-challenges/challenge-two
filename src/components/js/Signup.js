@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import FirebaseContext from "../../contexts/FirebaseContext";
+import { FirebaseContext } from "../../contexts/FirebaseContext";
+import { UserContext } from "../../contexts/UserContext";
 import Container from "react-bootstrap/Container";
 import "../css/Login_signup.css";
 
@@ -14,6 +15,8 @@ const Signup = () => {
   };
 
   const { auth } = useContext(FirebaseContext);
+  const { setUserData } = useContext(UserContext);
+
   const [firstName, _setFirstName] = useState("");
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
@@ -42,6 +45,12 @@ const Signup = () => {
               userId: authUser.user.id,
               userName: firstName,
             }),
+          }).then(() => {
+            fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
+              .then((response) => response.json())
+              .then((response) => {
+                setUserData(response["userData"]);
+              });
           });
         })
         .catch((error) => {
