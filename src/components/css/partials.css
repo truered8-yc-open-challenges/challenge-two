@@ -6,6 +6,8 @@ img {
 #account {
   color: grey;
   outline: none;
+  text-align: center;
+  text-decoration: none;
 }
 
 #points {
@@ -15,6 +17,7 @@ img {
   position: absolute;
   right: 1.1em;
   bottom: 0.7em;
+  min-width: 2em;
   outline: none;
   transition: background-color 250ms, color 250ms;
 }
