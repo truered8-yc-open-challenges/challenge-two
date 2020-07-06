@@ -32,9 +32,13 @@ const Login = () => {
     <Container>
       <div id="signupbody">
         <div> </div>
-        <h2 className="logintab">Login</h2>
+        <h2 className="logintab text-dark">Login</h2>
         <div className="horizontal-line"></div>
-        <h2 className="signuptab">Signup</h2>
+        <h2 className="signuptab">
+          <a href="/signup" className="text-secondary">
+            Signup
+          </a>
+        </h2>
         <div className="horizontal-line2"></div>
         <form>
           <label for="emaillogin" className="accountlabel-f">
@@ -75,6 +79,9 @@ const Login = () => {
           >
             <p>Login!</p>
           </button>
+          <p className="text-center">
+            Don't have an account? <a href="/signup">Sign up</a>
+          </p>
         </form>
         {errorMessage && (
           <div className="error-message">Error: {errorMessage}</div>

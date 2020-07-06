@@ -53,9 +53,13 @@ const Signup = () => {
   return (
     <Container>
       <div id="signupbody">
-        <h2 className="logintab">Login</h2>
+        <h2 className="logintab">
+          <a href="/login" className="text-secondary">
+            Login
+          </a>
+        </h2>
         <div className="horizontal-line"></div>
-        <h2 className="signuptab">Signup</h2>
+        <h2 className="signuptab text-dark">Signup</h2>
         <div className="horizontal-line2"></div>
         <br></br>
         <form>
@@ -138,6 +142,9 @@ const Signup = () => {
           >
             <p>Sign Up!</p>
           </button>
+          <p className="text-center">
+            Already have an account? <a href="/login">Login</a>
+          </p>
         </form>
         {errorMessage && (
           <div className="error-message">Error: {errorMessage}</div>
