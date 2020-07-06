@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "../css/Login_signup.css";
+import FirebaseContext from "../../contexts/FirebaseContext";
 import Container from "react-bootstrap/Container";
 const Login = () => {
+  const [showPassword, _setShowPassword] = useState(false);
+  const _toggleShowPassword = () => {
+    _setShowPassword(!showPassword);
+  };
+
+  const { auth } = useContext(FirebaseContext);
+  const [email, _setEmail] = useState("");
+  const [password, _setPassword] = useState("");
+
+  const [errorMessage, _setErrorMessage] = useState(null);
+
+  const isValid = () => {
+    return email !== "" && password !== "";
+  };
+
+  const onSubmit = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        _setErrorMessage(`Successfully logged in as ${authUser.user.email}`);
+      })
+      .catch((error) => {
+        _setErrorMessage(error.message);
+      });
+  };
   return (
     <Container>
       <div id="signupbody">
@@ -18,6 +44,8 @@ const Login = () => {
           <input
             type="text"
             id="emaillogin"
+            value={email}
+            onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
             className="accountinput-l"
             name="emaillogin"
@@ -28,17 +56,29 @@ const Login = () => {
           </label>
           <br></br>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="passwordlogin"
+            value={password}
+            onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
             className="accountinput-l"
             name="passwordlogin"
           ></input>
-          <span className="show3">Show</span>
-          <button type="button" className="enterbtn">
+          <span onClick={_toggleShowPassword} className="show3">
+            {showPassword ? "Hide" : "Show"}
+          </span>
+          <button
+            onClick={onSubmit}
+            disabled={!isValid()}
+            type="button"
+            className="enterbtn"
+          >
             <p>Login!</p>
           </button>
         </form>
+        {errorMessage && (
+          <div className="error-message">Error: {errorMessage}</div>
+        )}
       </div>
     </Container>
   );
