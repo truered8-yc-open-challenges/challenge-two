@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import React from "react";
 
 import "../../css/partials.css";
 
 const Account = (props) => {
-  const { userData } = useContext(UserContext);
+  const userDataString = localStorage.getItem("userData");
+  const userData = JSON.parse(userDataString);
 
   if (userData) {
     return (
