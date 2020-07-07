@@ -26,13 +26,24 @@ const Login = () => {
         fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
           .then((response) => response.json())
           .then((response) => {
-            localStorage.setItem(
-              "userData",
-              JSON.stringify(response["userData"])
-            );
-            window.location = "/";
+            if (!response["error"]) {
+              localStorage.setItem(
+                "userData",
+                JSON.stringify(response["userData"])
+              );
+              window.location = "/";
+            } else {
+              _setErrorMessage(response["message"]);
+            }
+          })
+          .catch((error) => {
+            _setErrorMessage(error.message);
           });
       })
+      /* .signInWithEmailAndPassword("bhat.bab@gmail.com", "saptarshi")
+      .then((authUser) => {
+        authUser.user.delete();
+      }) */
       .catch((error) => {
         _setErrorMessage(error.message);
       });

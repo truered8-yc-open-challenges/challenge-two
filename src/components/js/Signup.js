@@ -16,6 +16,7 @@ const Signup = () => {
   const { auth } = useContext(FirebaseContext);
 
   const [firstName, _setFirstName] = useState("");
+  const [lastName, _setLastName] = useState("");
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
   const [confirm, _setConfirm] = useState("");
@@ -26,6 +27,7 @@ const Signup = () => {
     return (
       password === confirm &&
       firstName !== "" &&
+      lastName !== "" &&
       email !== "" &&
       password !== ""
     );
@@ -40,18 +42,22 @@ const Signup = () => {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
-              userId: authUser.user.id,
-              userName: firstName,
+              userId: authUser.user.uid,
+              userName: `${firstName} ${lastName}`,
             }),
           }).then(() => {
             fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
               .then((response) => response.json())
               .then((response) => {
-                localStorage.setItem(
-                  "userData",
-                  JSON.stringify(response["userData"])
-                );
-                window.location = "/";
+                if (!response["error"]) {
+                  localStorage.setItem(
+                    "userData",
+                    JSON.stringify(response["userData"])
+                  );
+                  window.location = "/";
+                } else {
+                  _setErrorMessage(response["message"]);
+                }
               });
           });
         })
@@ -93,6 +99,8 @@ const Signup = () => {
           <input
             type="text"
             id="lnamesignup"
+            value={lastName}
+            onChange={(event) => _setLastName(event.target.value)}
             placeholder="  Enter last name here..."
             className="accountinput-s"
             name="lnamesignup"
