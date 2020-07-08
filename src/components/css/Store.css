@@ -17,6 +17,7 @@
   border: 0.1vw solid grey;
   border-radius: 1em;
   text-align: center;
+  font-size: 3vh;
   outline: none;
   transition: background-color 250ms, color 250ms, text-align 250ms;
 }
