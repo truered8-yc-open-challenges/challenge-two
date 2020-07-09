@@ -27,3 +27,18 @@
   color: white;
   text-decoration: none;
 }
+
+#promotion-modal {
+  outline: none;
+}
+#promotion-modal input {
+  outline: none;
+  box-sizing: border-box;
+  width: 97%;
+}
+#promotion-modal button {
+  outline: none;
+}
+#promotion-modal #button-submit {
+  float: right;
+}

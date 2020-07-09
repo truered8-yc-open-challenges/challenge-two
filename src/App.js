@@ -7,6 +7,7 @@ import Signup from "./components/js/Signup";
 import Store from "./components/js/Store";
 
 import * as ROUTES from "./constants/routes";
+import UserContextProvider from "./contexts/UserContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -14,15 +15,17 @@ import "./App.css";
 function App(props) {
   return (
     <div className="bg-gradient-1">
-      <Router>
-        <Header />
+      <UserContextProvider>
+        <Router>
+          <Header />
 
-        <Route exact path={ROUTES.STORE} component={Store} />
-        <Route path={ROUTES.LOGIN} component={Login} />
-        <Route path={ROUTES.SIGNUP} component={Signup} />
+          <Route exact path={ROUTES.STORE} component={Store} />
+          <Route path={ROUTES.LOGIN} component={Login} />
+          <Route path={ROUTES.SIGNUP} component={Signup} />
 
-        <Footer />
-      </Router>
+          <Footer />
+        </Router>
+      </UserContextProvider>
     </div>
   );
 }
