@@ -3,31 +3,6 @@
   float: left;
 }
 
-#promotion-buttons {
-  float: left;
-  width: 45%;
-}
-
-#promotion-buttons button,
-#promotion-buttons a {
-  display: block;
-  box-sizing: border-box;
-  background-color: white;
-  color: grey;
-  border: 0.1vw solid grey;
-  border-radius: 1em;
-  text-align: center;
-  font-size: 3vh;
-  outline: none;
-  transition: background-color 250ms, color 250ms, text-align 250ms;
-}
-#promotion-buttons button:hover,
-#promotion-buttons a:hover {
-  background-color: grey;
-  color: white;
-  text-decoration: none;
-}
-
 #promotion-modal {
   outline: none;
 }
