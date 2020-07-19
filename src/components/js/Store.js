@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../css/Store.css";
 import Promotion from "./store/Promotion";
+import "../css/Store.css";
+import Prizes from "./store/Prizes";
 
 const getRandomElement = (list) => {
   return list[Math.floor(Math.random() * list.length)];
@@ -22,7 +23,12 @@ const Store = () => {
       _setPromotion(response);
     });
   }, []);
-  return <div id="store">{promotion}</div>;
+  return (
+    <div id="store">
+      {promotion}
+      <Prizes />
+    </div>
+  );
 };
 
 export default Store;

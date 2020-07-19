@@ -1,6 +1,7 @@
 #promotion img {
+  box-sizing: border-box;
   border-radius: 1em;
-  float: left;
+  width: 100%;
 }
 
 #promotion-modal {
@@ -16,4 +17,13 @@
 }
 #promotion-modal #button-submit {
   float: right;
+}
+
+#prize-categories {
+  overflow: auto;
+  white-space: nowrap;
+}
+#prize-categories Button {
+  display: inline-block;
+  min-width: 14em;
 }

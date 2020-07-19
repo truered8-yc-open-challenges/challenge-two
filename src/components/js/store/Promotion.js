@@ -8,11 +8,7 @@ const Promotion = (props) => {
         rel="noopener noreferrer"
         href={props.promotion["event_url"]}
       >
-        <img
-          src={props.promotion["image_url"]}
-          alt="promotion"
-          className="w-50 m-sm-2"
-        />
+        <img src={props.promotion["image_url"]} alt="promotion" className="" />
       </a>
     </div>
   );
