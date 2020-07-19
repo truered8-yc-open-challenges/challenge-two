@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 
 const categories = [
@@ -23,16 +23,15 @@ const PrizeCategory = (props) => {
     </Button>
   );
 };
-const PrizeCategories = () => {
-  const [selected, _setSelected] = useState("Laptops");
+const PrizeCategories = (props) => {
   return (
     <div id="prize-categories" className="w-100 p-sm-2">
       {categories.map((value) => (
         <PrizeCategory
           name={value}
           key={value}
-          selected={selected}
-          setSelected={_setSelected}
+          selected={props.category}
+          setSelected={props.setCategory}
         />
       ))}
     </div>

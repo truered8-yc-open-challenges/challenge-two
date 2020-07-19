@@ -9,6 +9,7 @@ const getRandomElement = (list) => {
 
 const Store = () => {
   const [promotion, _setPromotion] = useState(null);
+  const [prizes, _setPrizes] = useState(null);
 
   useEffect(() => {
     const getPromotion = async () => {
@@ -22,11 +23,20 @@ const Store = () => {
     getPromotion().then((response) => {
       _setPromotion(response);
     });
+    const getPrizes = async () => {
+      const prizesJson = await fetch(
+        "https://api.youthcomputing.ca/shop/prizes"
+      ).then((response) => response.json());
+      return <Prizes prizeList={prizesJson["prizes"]} />;
+    };
+    getPrizes().then((response) => {
+      _setPrizes(response);
+    });
   }, []);
   return (
     <div id="store">
-      {promotion}
-      <Prizes />
+      {promotion ? promotion : <div>Loading promotion...</div>}
+      {prizes ? prizes : <div>Loading prizes...</div>}
     </div>
   );
 };
