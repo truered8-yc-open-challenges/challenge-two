@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-modal";
 import { UserContext } from "../../../contexts/UserContext";
 
@@ -7,6 +7,8 @@ const PromotionModal = (props) => {
   const [errorMessage, _setErrorMessage] = useState();
 
   const { userData, updateUserData } = useContext(UserContext);
+
+  useEffect(() => Modal.setAppElement("#account"), []);
 
   const onSubmit = () => {
     fetch("https://api.youthcomputing.ca/shop/redeem/event", {
