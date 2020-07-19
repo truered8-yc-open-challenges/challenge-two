@@ -71,11 +71,11 @@ const Login = () => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="accountinput-l"
+            className="accountinput-l accountinput"
             name="emaillogin"
           ></input>
           <br></br>
-          <label for="passwordlogin" className="accountlabel-f">
+          <label for="passwordlogin" className="accountlabel-f accountinput">
             Password:
           </label>
           <br></br>
@@ -85,7 +85,7 @@ const Login = () => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="accountinput-l"
+            className="accountinput-l accountinput"
             name="passwordlogin"
           ></input>
           <span onClick={_toggleShowPassword} className="show3">

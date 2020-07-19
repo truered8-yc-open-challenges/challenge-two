@@ -93,7 +93,7 @@ const Signup = () => {
             value={firstName}
             onChange={(event) => _setFirstName(event.target.value)}
             placeholder="  Enter first name here..."
-            className="accountinput-s"
+            className="accountinput-s accountinput"
             name="fnamesignup"
           ></input>
           <input
@@ -102,7 +102,7 @@ const Signup = () => {
             value={lastName}
             onChange={(event) => _setLastName(event.target.value)}
             placeholder="  Enter last name here..."
-            className="accountinput-s"
+            className="accountinput-s accountinput"
             name="lnamesignup"
           ></input>
           <br></br>
@@ -117,7 +117,7 @@ const Signup = () => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="accountinput-l"
+            className="accountinput-l accountinput"
             name="emailsignup"
           ></input>
           <br></br>
@@ -135,7 +135,7 @@ const Signup = () => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="accountinput-s"
+            className="accountinput-s accountinput"
             name="pwdsignup"
           ></input>
           <input
@@ -144,7 +144,7 @@ const Signup = () => {
             value={confirm}
             onChange={(event) => _setConfirm(event.target.value)}
             placeholder="  Enter password again here..."
-            className="accountinput-s"
+            className="accountinput-s accountinput"
             name="pwd2signup"
           ></input>
           <span onClick={_toggleShowPassword} className="show">
