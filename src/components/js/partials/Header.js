@@ -10,7 +10,12 @@ import "../../css/partials.css";
 
 const Header = () => {
   return (
-    <Navbar variant="light" expand="lg" className="pt-sm-4">
+    <Navbar
+      variant="light"
+      expand="lg"
+      sticky="top"
+      className="pt-sm-4 bg-white"
+    >
       <Navbar.Brand href="/">
         <img
           src={Logo}
