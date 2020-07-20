@@ -96,10 +96,10 @@
   box-sizing: border-box;
   border-radius: 0.65vw;
 }
-input {
+.accountinput {
   outline: none;
 }
-input::placeholder {
+.accountinput::placeholder {
   position: relative;
   font-family: Chivo;
   font-style: normal;
