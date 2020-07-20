@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Promotion from "./store/Promotion";
-import "../css/Store.css";
 import Prizes from "./store/Prizes";
+
+import "../css/Store.css";
 
 const getRandomElement = (list) => {
   return list[Math.floor(Math.random() * list.length)];
 };
 
-const Store = () => {
+const Store = (props) => {
   const [promotion, _setPromotion] = useState(null);
   const [prizes, _setPrizes] = useState(null);
 
@@ -20,17 +21,19 @@ const Store = () => {
         <Promotion promotion={getRandomElement(promotionsJson["promotions"])} />
       );
     };
-    getPromotion().then((response) => {
-      _setPromotion(response);
-    });
     const getPrizes = async () => {
       const prizesJson = await fetch(
         "https://api.youthcomputing.ca/shop/prizes"
       ).then((response) => response.json());
       return <Prizes prizeList={prizesJson["prizes"]} />;
     };
+    getPromotion().then((response) => {
+      _setPromotion(response);
+      props.setLoadedPromotion(true);
+    });
     getPrizes().then((response) => {
       _setPrizes(response);
+      props.setLoadedPrizes(true);
     });
   }, []);
   return (
