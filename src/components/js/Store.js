@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import LoadingOverlay from "react-loading-overlay";
+
 import Promotion from "./store/Promotion";
 import Prizes from "./store/Prizes";
 
@@ -23,23 +25,27 @@ const Store = (props) => {
     };
     const getPrizes = async () => {
       const prizesJson = await fetch(
-        "https://api.youthcomputing.ca/shop/prizes"
+        "https://cors-anywhere.herokuapp.com/https://api.youthcomputing.ca/shop/prizes"
       ).then((response) => response.json());
       return <Prizes prizeList={prizesJson["prizes"]} />;
     };
     getPromotion().then((response) => {
       _setPromotion(response);
-      props.setLoadedPromotion(true);
     });
     getPrizes().then((response) => {
       _setPrizes(response);
-      props.setLoadedPrizes(true);
     });
   }, []);
   return (
     <div id="store">
-      {promotion ? promotion : <div>Loading promotion...</div>}
-      {prizes ? prizes : <div>Loading prizes...</div>}
+      <LoadingOverlay
+        active={!(promotion && prizes)}
+        spinner /* ={<img src={Logo} alt="YouthComputing logo" />} */
+        text="Loading store..."
+      >
+        {promotion ? promotion : <div>Loading promotion...</div>}
+        {prizes ? prizes : <div>Loading prizes...</div>}
+      </LoadingOverlay>
     </div>
   );
 };

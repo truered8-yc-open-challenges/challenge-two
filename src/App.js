@@ -1,6 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Main from "./components/js/Main";
+import { Route } from "react-router-dom";
+
+import Header from "./components/js/partials/Header";
+import Footer from "./components/js/partials/Footer";
+import Login from "./components/js/Login";
+import Signup from "./components/js/Signup";
+import Store from "./components/js/Store";
+
+import * as ROUTES from "./constants/routes";
 
 import UserContextProvider from "./contexts/UserContext";
 
@@ -12,7 +20,13 @@ function App(props) {
     <div className="bg-gradient-1">
       <UserContextProvider>
         <Router>
-          <Main />
+          <Header />
+
+          <Route exact path={ROUTES.STORE} component={Store} />
+          <Route path={ROUTES.LOGIN} component={Login} />
+          <Route path={ROUTES.SIGNUP} component={Signup} />
+
+          <Footer />
         </Router>
       </UserContextProvider>
     </div>
