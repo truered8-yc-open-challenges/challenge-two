@@ -4,7 +4,7 @@ import Prize from "./Prize";
 import debounce from "lodash.debounce";
 import { categories } from "./../../../constants/categories";
 
-const override = `
+const loaderStyle = `
   display: block;
   margin: 1em auto;
   border-color: red;
@@ -53,7 +53,7 @@ const PrizeList = (props) => {
       {availablePrizes.slice(0, numPrizes).map((prize) => (
         <Prize prizeJson={prize} key={prize["id"]} />
       ))}
-      <DotLoader css={override} color={"#123abc"} loading={loading} />
+      <DotLoader css={loaderStyle} color={"#123abc"} loading={loading} />
     </div>
   );
 };

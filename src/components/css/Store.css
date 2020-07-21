@@ -27,3 +27,7 @@
   display: inline-block;
   min-width: 14em;
 }
+
+.prize-name {
+  height: 7em;
+}
