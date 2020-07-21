@@ -75,7 +75,6 @@ const Signup = () => {
             Login
           </a>
         </h2>
-        <div className="horizontal-line"></div>
         <h2 className="signuptab text-dark">Signup</h2>
         <div className="horizontal-line2"></div>
         <br></br>

@@ -59,7 +59,6 @@ const Login = () => {
             Signup
           </a>
         </h2>
-        <div className="horizontal-line2"></div>
         <form>
           <label for="emaillogin" className="accountlabel-f">
             Email:
