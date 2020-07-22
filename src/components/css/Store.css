@@ -22,7 +22,7 @@
 }
 
 .prize-name {
-  height: 7em;
+  min-height: 7em;
 }
 
 #prize-modal {
