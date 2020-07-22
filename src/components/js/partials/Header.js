@@ -5,12 +5,16 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Account from "./Account";
 
-import { SearchContext } from "./../../../contexts/SearchContext";
+import { UserContext } from "../../../contexts/UserContext";
+import { SearchContext } from "../../../contexts/SearchContext";
+
+import * as ROUTES from "../../../constants/routes";
 
 import Logo from "../../../logo.svg";
 import "../../css/partials.css";
 
 const Header = () => {
+  const { userData } = useContext(UserContext);
   const { query, setQuery } = useContext(SearchContext);
 
   return (
@@ -32,11 +36,18 @@ const Header = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/signup">Sign Up</Nav.Link>
-        </Nav>
+        {userData ? (
+          <Nav className="mr-auto">
+            <Nav.Link href={ROUTES.STORE}>Home</Nav.Link>
+            <Nav.Link href={ROUTES.LOGOUT}>Logout</Nav.Link>
+          </Nav>
+        ) : (
+          <Nav className="mr-auto">
+            <Nav.Link href={ROUTES.STORE}>Home</Nav.Link>
+            <Nav.Link href={ROUTES.LOGIN}>Login</Nav.Link>
+            <Nav.Link href={ROUTES.SIGNUP}>Sign Up</Nav.Link>
+          </Nav>
+        )}
         <Form inline className="w-50">
           <FormControl
             type="text"
