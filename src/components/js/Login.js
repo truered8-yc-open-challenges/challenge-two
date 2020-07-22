@@ -1,14 +1,21 @@
 import React, { useContext, useState } from "react";
-import "../css/Login_signup.css";
-import { FirebaseContext } from "../../contexts/FirebaseContext";
 import Container from "react-bootstrap/Container";
-const Login = () => {
+import { withRouter } from "react-router-dom";
+
+import { FirebaseContext } from "../../contexts/FirebaseContext";
+import { UserContext } from "./../../contexts/UserContext";
+import * as ROUTES from "./../../constants/routes";
+
+import "../css/Login_signup.css";
+
+const Login = (props) => {
   const [showPassword, _setShowPassword] = useState(false);
   const _toggleShowPassword = () => {
     _setShowPassword(!showPassword);
   };
 
   const { auth } = useContext(FirebaseContext);
+  const { setUserData } = useContext(UserContext);
 
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
@@ -27,11 +34,8 @@ const Login = () => {
           .then((response) => response.json())
           .then((response) => {
             if (!response["error"]) {
-              localStorage.setItem(
-                "userData",
-                JSON.stringify(response["userData"])
-              );
-              window.location = "/";
+              setUserData(response["userData"]);
+              props.history.push(ROUTES.STORE);
             } else {
               _setErrorMessage(response["message"]);
             }
@@ -40,10 +44,6 @@ const Login = () => {
             _setErrorMessage(error.message);
           });
       })
-      /* .signInWithEmailAndPassword("bhat.bab@gmail.com", "saptarshi")
-      .then((authUser) => {
-        authUser.user.delete();
-      }) */
       .catch((error) => {
         _setErrorMessage(error.message);
       });
@@ -110,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

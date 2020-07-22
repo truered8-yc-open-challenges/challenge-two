@@ -18,8 +18,7 @@ const Prize = (props) => {
   const [message, _setMessage] = useState();
   const [success, _setSuccess] = useState(false);
 
-  const { userData, updateUserData } = useContext(UserContext);
-
+  const { userData, setUserData } = useContext(UserContext);
   const onClick = () => {
     _setShow(true);
     fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
@@ -38,7 +37,7 @@ const Prize = (props) => {
           fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
             .then((response) => response.json())
             .then((response) => {
-              updateUserData(response["userData"]);
+              setUserData(response["userData"]);
             });
         } else {
           _setMessage(response["message"]);

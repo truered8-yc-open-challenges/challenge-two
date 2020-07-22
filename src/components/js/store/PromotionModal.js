@@ -11,7 +11,7 @@ const PromotionModal = (props) => {
   const [errorMessage, _setErrorMessage] = useState();
   const [loading, _setLoading] = useState(false);
 
-  const { userData, updateUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   const onSubmit = () => {
     _setLoading(true);
@@ -29,7 +29,7 @@ const PromotionModal = (props) => {
           fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
             .then((response) => response.json())
             .then((response) => {
-              updateUserData(response["userData"]);
+              setUserData(response["userData"]);
             });
           _setErrorMessage();
           props.handleClose();

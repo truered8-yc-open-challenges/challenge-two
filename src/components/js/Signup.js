@@ -1,9 +1,14 @@
 import React, { useContext, useState } from "react";
-import { FirebaseContext } from "../../contexts/FirebaseContext";
 import Container from "react-bootstrap/Container";
+import { withRouter } from "react-router-dom";
+
+import { FirebaseContext } from "../../contexts/FirebaseContext";
+import { UserContext } from "./../../contexts/UserContext";
+import * as ROUTES from "./../../constants/routes";
+
 import "../css/Login_signup.css";
 
-const Signup = () => {
+const Signup = (props) => {
   const [showPassword, _setShowPassword] = useState(false);
   const [showConfirm, _setShowConfirm] = useState(false);
   const _toggleShowPassword = () => {
@@ -14,6 +19,7 @@ const Signup = () => {
   };
 
   const { auth } = useContext(FirebaseContext);
+  const { setUserData } = useContext(UserContext);
 
   const [firstName, _setFirstName] = useState("");
   const [lastName, _setLastName] = useState("");
@@ -50,11 +56,8 @@ const Signup = () => {
               .then((response) => response.json())
               .then((response) => {
                 if (!response["error"]) {
-                  localStorage.setItem(
-                    "userData",
-                    JSON.stringify(response["userData"])
-                  );
-                  window.location = "/";
+                  setUserData(response["userData"]);
+                  props.history.push(ROUTES.STORE);
                 } else {
                   _setErrorMessage(response["message"]);
                 }
@@ -172,4 +175,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withRouter(Signup);
