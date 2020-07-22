@@ -11,32 +11,30 @@ const loaderStyle = `
 
 const PrizeModal = (props) => {
   return (
-    <>
-      <Modal
-        id="prize-modal"
-        show={props.show}
-        backdropClassName="position-fixed m-auto"
-        autoFocus
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Prize</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {props.message}
-          <PacmanLoader
-            css={loaderStyle}
-            color={"#123abc"}
-            loading={!props.message}
-            size={50}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <Modal
+      id="prize-modal"
+      show={props.show}
+      backdropClassName="position-fixed m-auto"
+      autoFocus
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>Prize</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {props.message}
+        <PacmanLoader
+          css={loaderStyle}
+          color={"#123abc"}
+          loading={!props.message}
+          size={50}
+        />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

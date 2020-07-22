@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
-import EventModal from "./../store/EventModal";
+import PromotionModal from "../store/PromotionModal";
 import { UserContext } from "./../../../contexts/UserContext";
 
 import "../../css/partials.css";
@@ -15,15 +15,11 @@ const Account = (props) => {
   if (userData) {
     return (
       <div id="account" className="w-25 p-sm-2 bg-white shadow">
-        <EventModal
-          show={showEvent}
-          handleClose={handleClose}
-          handleShow={handleShow}
-        />
+        <PromotionModal show={showEvent} handleClose={handleClose} />
         <Button
           variant="primary"
           onClick={handleShow}
-          className="w-100 border-0 shadow-none m-0 p-0 bg-white text-black-50"
+          className="w-100 border-0 shadow-none m-0 p-0 bg-white text-body"
         >
           Redeem Event
         </Button>

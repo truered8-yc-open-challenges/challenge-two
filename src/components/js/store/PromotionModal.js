@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import Modal from "react-modal";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 import { UserContext } from "../../../contexts/UserContext";
 
 const PromotionModal = (props) => {
@@ -7,8 +9,6 @@ const PromotionModal = (props) => {
   const [errorMessage, _setErrorMessage] = useState();
 
   const { userData, updateUserData } = useContext(UserContext);
-
-  useEffect(() => Modal.setAppElement("#account"), []);
 
   const onSubmit = () => {
     fetch("https://api.youthcomputing.ca/shop/redeem/event", {
@@ -36,38 +36,39 @@ const PromotionModal = (props) => {
   return (
     <Modal
       id="promotion-modal"
-      className="w-50 m-auto bg-white"
-      isOpen={props.show}
-      onRequestClose={props.handleClose}
-      contentLabel="Redeem Event"
+      show={props.show}
+      backdropClassName="position-fixed m-auto"
+      autoFocus
     >
-      <h2 className="m-sm-2">Redeem Event</h2>
-      <input
-        type="text"
-        id="event-code"
-        className="rounded m-auto m-sm-2 p-sm-1"
-        value={code}
-        onChange={(event) => _setCode(event.target.value)}
-        placeholder="Enter event code"
-      ></input>
-      <br />
-      <button
-        id="button-close"
-        className="btn-outline rounded border-0 m-sm-2 p-sm-2"
-        onClick={props.handleClose}
-      >
-        Cancel
-      </button>
-      <button
-        id="button-submit"
-        className="btn-primary rounded m-sm-2 p-sm-2"
-        onClick={onSubmit}
-      >
-        Submit
-      </button>
-      {errorMessage && (
-        <div className="error-message p-sm-2">Error: {errorMessage}</div>
-      )}
+      <Modal.Header closeButton>
+        <Modal.Title>Redeem Event</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <input
+          type="text"
+          id="event-code"
+          className="rounded m-auto m-sm-2 p-sm-1"
+          value={code}
+          onChange={(event) => _setCode(event.target.value)}
+          placeholder="Enter event code"
+        ></input>
+
+        {errorMessage && (
+          <div className="error-message p-sm-2">Error: {errorMessage}</div>
+        )}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="secondary"
+          onClick={props.handleClose}
+          className="float-left"
+        >
+          Cancel
+        </Button>
+        <Button variant="primary" onClick={onSubmit}>
+          Submit
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 };
