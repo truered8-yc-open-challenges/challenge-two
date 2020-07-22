@@ -14,6 +14,7 @@ const PrizeModal = (props) => {
     <Modal
       id="prize-modal"
       show={props.show}
+      onHide={props.handleClose}
       backdropClassName="position-fixed m-auto"
       autoFocus
     >

@@ -1,16 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import FormControl from "react-bootstrap/FormControl";
+import Spinner from "react-bootstrap/Spinner";
 
 import { UserContext } from "../../../contexts/UserContext";
 
 const PromotionModal = (props) => {
   const [code, _setCode] = useState("");
   const [errorMessage, _setErrorMessage] = useState();
+  const [loading, _setLoading] = useState(false);
 
   const { userData, updateUserData } = useContext(UserContext);
 
   const onSubmit = () => {
+    _setLoading(true);
     fetch("https://api.youthcomputing.ca/shop/redeem/event", {
       method: "PUT",
       headers: { "Content-type": "application/json" },
@@ -30,6 +34,7 @@ const PromotionModal = (props) => {
           _setErrorMessage();
           props.handleClose();
         } else _setErrorMessage(response["message"]);
+        _setLoading(false);
       });
   };
 
@@ -37,6 +42,7 @@ const PromotionModal = (props) => {
     <Modal
       id="promotion-modal"
       show={props.show}
+      onHide={props.handleClose}
       backdropClassName="position-fixed m-auto"
       autoFocus
     >
@@ -44,14 +50,14 @@ const PromotionModal = (props) => {
         <Modal.Title>Redeem Event</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <input
+        <FormControl
           type="text"
           id="event-code"
           className="rounded m-auto m-sm-2 p-sm-1"
           value={code}
           onChange={(event) => _setCode(event.target.value)}
           placeholder="Enter event code"
-        ></input>
+        />
 
         {errorMessage && (
           <div className="error-message p-sm-2">Error: {errorMessage}</div>
@@ -63,10 +69,16 @@ const PromotionModal = (props) => {
           onClick={props.handleClose}
           className="float-left"
         >
-          Cancel
+          Close
         </Button>
-        <Button variant="primary" onClick={onSubmit}>
-          Submit
+        <Button variant="primary" onClick={onSubmit} disabled={loading}>
+          {loading ? (
+            <div id="loading-promotion">
+              <Spinner animation="border" size="sm" />
+            </div>
+          ) : (
+            "Submit"
+          )}
         </Button>
       </Modal.Footer>
     </Modal>

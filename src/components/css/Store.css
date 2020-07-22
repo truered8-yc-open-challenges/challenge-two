@@ -11,17 +11,6 @@
   right: 0;
   bottom: 0;
 }
-#promotion-modal input {
-  outline: none;
-  box-sizing: border-box;
-  width: 97%;
-}
-#promotion-modal button {
-  outline: none;
-}
-#promotion-modal #button-submit {
-  float: right;
-}
 
 #prize-categories {
   overflow: auto;
