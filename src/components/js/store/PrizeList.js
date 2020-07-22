@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import { SortNumericDown, SortNumericUp } from "react-bootstrap-icons";
 import DotLoader from "react-spinners/DotLoader";
-import Prize from "./Prize";
 import debounce from "lodash.debounce";
+import Prize from "./Prize";
 import { categories } from "./../../../constants/categories";
 
 const loaderStyle = `
@@ -11,7 +13,10 @@ const loaderStyle = `
 `;
 
 const PrizeList = (props) => {
-  const numPrizeIncrement = 4;
+  const [lowToHigh, setLowToHigh] = useState(true);
+
+  const isMobile = window.screen.orientation === "portrait";
+  const numPrizeIncrement = isMobile ? 1 : 4;
   const [numPrizes, _setNumPrizes] = useState(numPrizeIncrement);
   const [availablePrizes, _setAvailablePrizes] = useState(
     props.prizeList.filter(
@@ -49,10 +54,25 @@ const PrizeList = (props) => {
   }, 100);
 
   return (
-    <div id="prize-list" className="d-inline">
-      {availablePrizes.slice(0, numPrizes).map((prize) => (
-        <Prize prizeJson={prize} key={prize["id"]} />
-      ))}
+    <div>
+      <Button
+        id="prize-sorter"
+        variant="info"
+        onClick={() => setLowToHigh(!lowToHigh)}
+        className="display-block mx-sm-2"
+      >
+        Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
+      </Button>
+      <div id="prize-list" className="d-inline-block">
+        {availablePrizes
+          .slice(0, numPrizes)
+          .sort((a, b) =>
+            lowToHigh ? a["points"] - b["points"] : b["points"] - a["points"]
+          )
+          .map((prize) => (
+            <Prize prizeJson={prize} key={prize["id"]} isMobile={isMobile} />
+          ))}
+      </div>
       <DotLoader css={loaderStyle} color={"#123abc"} loading={loading} />
     </div>
   );
