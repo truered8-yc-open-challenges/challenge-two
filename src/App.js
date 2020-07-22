@@ -10,6 +10,7 @@ import Store from "./components/js/Store";
 
 import * as ROUTES from "./constants/routes";
 
+import SearchContextProvider from "./contexts/SearchContext";
 import UserContextProvider from "./contexts/UserContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,9 +21,10 @@ function App(props) {
     <div className="bg-gradient-1">
       <UserContextProvider>
         <Router>
-          <Header />
-
-          <Route exact path={ROUTES.STORE} component={Store} />
+          <SearchContextProvider>
+            <Header />
+            <Route exact path={ROUTES.STORE} component={Store} />
+          </SearchContextProvider>
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.SIGNUP} component={Signup} />
 
