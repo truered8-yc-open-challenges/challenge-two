@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Account from "./Account";
 
+import { SearchContext } from "./../../../contexts/SearchContext";
+
 import Logo from "../../../logo.svg";
 import "../../css/partials.css";
 
 const Header = () => {
+  const { query, setQuery } = useContext(SearchContext);
+
   return (
     <Navbar
       variant="light"
@@ -36,16 +40,14 @@ const Header = () => {
         <Form inline className="w-50">
           <FormControl
             type="text"
-            placeholder="Search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search prizes..."
             className="mx-sm-4 w-100 not-rounded border-white shadow"
             id="navbar-search"
           />
         </Form>
-        <Account
-          loggedIn={true}
-          email="ava.lovelace@youthcomputing.ca"
-          points={100}
-        />
+        <Account />
       </Navbar.Collapse>
     </Navbar>
   );

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { SortNumericDown, SortNumericUp } from "react-bootstrap-icons";
 import DotLoader from "react-spinners/DotLoader";
 import debounce from "lodash.debounce";
+
 import Prize from "./Prize";
+import { SearchContext } from "./../../../contexts/SearchContext";
 import { categories } from "./../../../constants/categories";
 
 const loaderStyle = `
@@ -23,9 +25,6 @@ const PrizeList = (props) => {
       (prize) => categories[prize["category"]] === props.category
     )
   );
-
-  const [loading, _setLoading] = useState(false);
-
   useEffect(() => {
     _setAvailablePrizes(
       props.prizeList.filter(
@@ -38,11 +37,12 @@ const PrizeList = (props) => {
       ) */
     );
   }, [props.prizeList, props.category, numPrizes]);
+
+  const [loading, _setLoading] = useState(false);
   useEffect(() => _setLoading(numPrizes < availablePrizes.length), [
     numPrizes,
     availablePrizes,
   ]);
-
   window.onscroll = debounce(() => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
@@ -52,6 +52,8 @@ const PrizeList = (props) => {
         _setNumPrizes(numPrizes + numPrizeIncrement);
     }
   }, 100);
+
+  const { query } = useContext(SearchContext);
 
   return (
     <div>
@@ -68,6 +70,9 @@ const PrizeList = (props) => {
           .slice(0, numPrizes)
           .sort((a, b) =>
             lowToHigh ? a["points"] - b["points"] : b["points"] - a["points"]
+          )
+          .filter((prize) =>
+            prize["name"].toLowerCase().includes(query.toLowerCase())
           )
           .map((prize) => (
             <Prize prizeJson={prize} key={prize["id"]} isMobile={isMobile} />
