@@ -16,6 +16,7 @@ const Prize = (props) => {
   const handleClose = () => _setShow(false);
 
   const [message, _setMessage] = useState();
+  const [success, _setSuccess] = useState(false);
 
   const { userData, updateUserData } = useContext(UserContext);
 
@@ -33,12 +34,16 @@ const Prize = (props) => {
       .then((response) => {
         if (!response["error"]) {
           _setMessage(`Successfully redeemed ${props.prizeJson["name"]}!`);
+          _setSuccess(true);
           fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
             .then((response) => response.json())
             .then((response) => {
               updateUserData(response["userData"]);
             });
-        } else _setMessage(response["message"]);
+        } else {
+          _setMessage(response["message"]);
+          _setSuccess(false);
+        }
       });
   };
 
@@ -48,6 +53,7 @@ const Prize = (props) => {
       <PrizeModal
         prizeJson={props.prizeJson}
         message={message}
+        success={success}
         show={showModal}
         handleClose={handleClose}
       />
@@ -65,7 +71,7 @@ const Prize = (props) => {
           loading={!imageLoaded}
           size={100}
         />
-        <div className="prize-name p-sm-2">
+        <div className="prize-name p-md-2">
           <strong>{props.prizeJson["name"]}</strong>
         </div>
         <div className="float-left m-sm-2">Redeem Now</div>

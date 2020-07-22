@@ -22,6 +22,13 @@ const PrizeModal = (props) => {
         <Modal.Title>Prize</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {props.success && (
+          <img
+            src={props.prizeJson["image_url"]}
+            alt={props.prizeJson["name"]}
+            className="w-100"
+          />
+        )}
         {props.message}
         <PacmanLoader
           css={loaderStyle}
