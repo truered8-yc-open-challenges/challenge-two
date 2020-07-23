@@ -86,7 +86,7 @@ const PrizeList = (props) => {
   );
 
   return (
-    <div>
+    <div className="mt-sm-3">
       {displayPrizes.length > 1 && (
         <Button
           id="prize-sorter"

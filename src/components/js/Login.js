@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { FirebaseContext } from "../../contexts/FirebaseContext";
 import { UserContext } from "./../../contexts/UserContext";
 import * as ROUTES from "./../../constants/routes";
+import { formattedErrors } from "../../constants/helpers";
 
 import "../css/Login_signup.css";
 
@@ -21,6 +22,10 @@ const Login = (props) => {
   const [password, _setPassword] = useState("");
 
   const [errorMessage, _setErrorMessage] = useState(null);
+  const updateErrorMessage = (message) => {
+    if (formattedErrors[message]) _setErrorMessage(formattedErrors[message]);
+    else _setErrorMessage(message);
+  };
 
   const isValid = () => {
     return email !== "" && password !== "";
@@ -37,15 +42,15 @@ const Login = (props) => {
               setUserData(response["userData"]);
               props.history.push(ROUTES.STORE);
             } else {
-              _setErrorMessage(response["message"]);
+              updateErrorMessage(response["message"]);
             }
           })
           .catch((error) => {
-            _setErrorMessage(error.message);
+            updateErrorMessage(error.message);
           });
       })
       .catch((error) => {
-        _setErrorMessage(error.message);
+        updateErrorMessage(error.message);
       });
   };
   return (
