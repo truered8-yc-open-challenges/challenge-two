@@ -21,29 +21,34 @@ const Prize = (props) => {
   const { userData, setUserData } = useContext(UserContext);
   const onClick = () => {
     _setShow(true);
-    fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        userId: userData["id"],
-        prizeId: props.prizeJson["id"],
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (!response["error"]) {
-          _setMessage(`Successfully redeemed ${props.prizeJson["name"]}!`);
-          _setSuccess(true);
-          fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
-            .then((response) => response.json())
-            .then((response) => {
-              setUserData(response["userData"]);
-            });
-        } else {
-          _setMessage(response["message"]);
-          _setSuccess(false);
-        }
-      });
+    if (userData)
+      fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          userId: userData["id"],
+          prizeId: props.prizeJson["id"],
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (!response["error"]) {
+            _setMessage(`Successfully redeemed ${props.prizeJson["name"]}!`);
+            _setSuccess(true);
+            fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
+              .then((response) => response.json())
+              .then((response) => {
+                setUserData(response["userData"]);
+              });
+          } else {
+            _setMessage(response["message"]);
+            _setSuccess(false);
+          }
+        });
+    else {
+      _setMessage("You must log in to redeem prizes!");
+      _setSuccess(false);
+    }
   };
 
   const [imageLoaded, _setImageLoaded] = useState(false);
@@ -56,7 +61,7 @@ const Prize = (props) => {
         show={showModal}
         handleClose={handleClose}
       />
-      <Button className="bg-white text-body" onClick={onClick}>
+      <Button className="border-0 shadow bg-white text-body" onClick={onClick}>
         <img
           src={props.prizeJson["image_url"]}
           alt={props.prizeJson["name"]}

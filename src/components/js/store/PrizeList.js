@@ -6,7 +6,7 @@ import debounce from "lodash.debounce";
 
 import Prize from "./Prize";
 import { SearchContext } from "./../../../contexts/SearchContext";
-import { categories } from "./../../../constants/categories";
+import { categories } from "../../../constants/helpers";
 
 const loaderStyle = `
   display: block;
@@ -92,7 +92,7 @@ const PrizeList = (props) => {
           id="prize-sorter"
           variant="info"
           onClick={() => setLowToHigh(!lowToHigh)}
-          className="display-block mx-sm-2"
+          className="display-block mx-sm-4 mt-0 mb-sm-1 rounded-pill"
         >
           Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
         </Button>
