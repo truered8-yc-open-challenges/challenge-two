@@ -73,7 +73,7 @@ const Signup = (props) => {
 
   return (
     <Container>
-      <div id="signupbody">
+      <div id="signupbody" className="bg-white">
         <h2 className="logintab">
           <a href="/login" className="text-secondary">
             Login
