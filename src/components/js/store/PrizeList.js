@@ -54,19 +54,23 @@ const PrizeList = (props) => {
   }, 100);
 
   const { query } = useContext(SearchContext);
-
-  return (
-    <div>
-      <Button
-        id="prize-sorter"
-        variant="info"
-        onClick={() => setLowToHigh(!lowToHigh)}
-        className="display-block mx-sm-2"
-      >
-        Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
-      </Button>
-      <div id="prize-list" className="d-inline-block">
-        {availablePrizes
+  const [displayPrizes, _setDisplayPrizes] = useState(
+    availablePrizes
+      .slice(0, numPrizes)
+      .sort((a, b) =>
+        lowToHigh ? a["points"] - b["points"] : b["points"] - a["points"]
+      )
+      .filter((prize) =>
+        prize["name"].toLowerCase().includes(query.toLowerCase())
+      )
+      .map((prize) => (
+        <Prize prizeJson={prize} key={prize["id"]} isMobile={isMobile} />
+      ))
+  );
+  useEffect(
+    () =>
+      _setDisplayPrizes(
+        availablePrizes
           .slice(0, numPrizes)
           .sort((a, b) =>
             lowToHigh ? a["points"] - b["points"] : b["points"] - a["points"]
@@ -76,7 +80,25 @@ const PrizeList = (props) => {
           )
           .map((prize) => (
             <Prize prizeJson={prize} key={prize["id"]} isMobile={isMobile} />
-          ))}
+          ))
+      ),
+    [availablePrizes, numPrizes, lowToHigh, isMobile, query]
+  );
+
+  return (
+    <div>
+      {displayPrizes.length > 1 && (
+        <Button
+          id="prize-sorter"
+          variant="info"
+          onClick={() => setLowToHigh(!lowToHigh)}
+          className="display-block mx-sm-2"
+        >
+          Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
+        </Button>
+      )}
+      <div id="prize-list" className="d-inline-block">
+        {displayPrizes}
       </div>
       <DotLoader css={loaderStyle} color={"#123abc"} loading={loading} />
     </div>
