@@ -4,7 +4,7 @@ import LoadingOverlay from "react-loading-overlay";
 import Promotion from "./store/Promotion";
 import Prizes from "./store/Prizes";
 
-import "../css/Store.css";
+import "./../css/Store.css";
 
 const getRandomElement = (list) => {
   return list[Math.floor(Math.random() * list.length)];

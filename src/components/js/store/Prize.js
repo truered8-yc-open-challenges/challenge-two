@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import PrizeModal from "./PrizeModal";
 import Button from "react-bootstrap/Button";
 import ClipLoader from "react-spinners/ClipLoader";
+import PrizeModal from "./PrizeModal";
 
-import { UserContext } from "../../../contexts/UserContext";
+import { UserContext } from "./../../../contexts/UserContext";
 
 const loaderStyle = `
   display: block;

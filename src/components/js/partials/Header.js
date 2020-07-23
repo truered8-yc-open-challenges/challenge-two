@@ -5,13 +5,13 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Account from "./Account";
 
-import { UserContext } from "../../../contexts/UserContext";
-import { SearchContext } from "../../../contexts/SearchContext";
+import { UserContext } from "./../../../contexts/UserContext";
+import { SearchContext } from "./../../../contexts/SearchContext";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "./../../../constants/routes";
 
-import Logo from "../../../logo.svg";
-import "../../css/partials.css";
+import Logo from "./../../../logo.svg";
+import "./../../css/partials.css";
 
 const Header = () => {
   const { userData } = useContext(UserContext);

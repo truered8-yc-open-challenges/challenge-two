@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Spinner from "react-bootstrap/Spinner";
 
-import { UserContext } from "../../../contexts/UserContext";
+import { UserContext } from "./../../../contexts/UserContext";
 
 const PromotionModal = (props) => {
   const [code, _setCode] = useState("");

@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import { SortNumericDown, SortNumericUp } from "react-bootstrap-icons";
 import DotLoader from "react-spinners/DotLoader";
 import debounce from "lodash.debounce";
-
 import Prize from "./Prize";
+
 import { SearchContext } from "./../../../contexts/SearchContext";
 import { categories } from "./../../../constants/categories";
 
