@@ -6,7 +6,7 @@ import { UserContext } from "./../../../contexts/UserContext";
 
 import "../../css/partials.css";
 
-const Account = (props) => {
+const Account = () => {
   const [showEvent, _setShowEvent] = useState(false);
   const handleClose = () => _setShowEvent(false);
   const handleShow = () => _setShowEvent(true);
