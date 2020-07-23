@@ -17,12 +17,12 @@ import * as ROUTES from "./constants/routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-function App(props) {
+function App() {
   return (
-    <wrapper className="bg-gradient-1 d-flex flex-column">
+    <div id="wrapper" className="bg-gradient-1 d-flex flex-column">
       <UserContextProvider>
         <Router>
-          <div class="flex-fill">
+          <div className="flex-fill">
             <SearchContextProvider>
               <Header />
               <Route exact path={ROUTES.STORE} component={Store} />
@@ -34,7 +34,7 @@ function App(props) {
           <Footer />
         </Router>
       </UserContextProvider>
-    </wrapper>
+    </div>
   );
 }
 
