@@ -9,10 +9,10 @@ import Logout from "./components/js/Logout";
 import Signup from "./components/js/Signup";
 import Store from "./components/js/Store";
 
-import * as ROUTES from "./constants/routes";
-
 import SearchContextProvider from "./contexts/SearchContext";
 import UserContextProvider from "./contexts/UserContext";
+
+import * as ROUTES from "./constants/routes";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";

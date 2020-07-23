@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
-import PromotionModal from "../store/PromotionModal";
+import PromotionModal from "./../store/PromotionModal";
+
 import { UserContext } from "./../../../contexts/UserContext";
 
 import "../../css/partials.css";

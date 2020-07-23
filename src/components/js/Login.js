@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import { FirebaseContext } from "../../contexts/FirebaseContext";
 import { UserContext } from "./../../contexts/UserContext";
+
 import * as ROUTES from "./../../constants/routes";
 import { formattedErrors } from "../../constants/helpers";
 
