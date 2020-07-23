@@ -19,21 +19,22 @@ import "./App.css";
 
 function App(props) {
   return (
-    <div>
+    <wrapper className="bg-gradient-1 d-flex flex-column">
       <UserContextProvider>
         <Router>
-          <SearchContextProvider>
-            <Header />
-            <Route exact path={ROUTES.STORE} component={Store} />
-          </SearchContextProvider>
-          <Route path={ROUTES.LOGIN} component={Login} />
-          <Route path={ROUTES.LOGOUT} component={Logout} />
-          <Route path={ROUTES.SIGNUP} component={Signup} />
-
+          <div class="flex-fill">
+            <SearchContextProvider>
+              <Header />
+              <Route exact path={ROUTES.STORE} component={Store} />
+            </SearchContextProvider>
+            <Route path={ROUTES.LOGIN} component={Login} />
+            <Route path={ROUTES.LOGOUT} component={Logout} />
+            <Route path={ROUTES.SIGNUP} component={Signup} />
+          </div>
           <Footer />
         </Router>
       </UserContextProvider>
-    </div>
+    </wrapper>
   );
 }
 

@@ -3,6 +3,11 @@
   margin: 0;
 }
 
+body,
+wrapper {
+  min-height: 100vh;
+}
+
 .bg-gradient-1 {
   background: linear-gradient(to right, #fff 0%, #eee 100%);
 }
