@@ -97,7 +97,7 @@ const PrizeList = (props) => {
           Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
         </Button>
       )}
-      <div id="prize-list" className="d-inline-block">
+      <div id="prize-list" className="d-inline-block mx-sm-3">
         {displayPrizes}
       </div>
       <DotLoader css={loaderStyle} color={"#123abc"} loading={loading} />

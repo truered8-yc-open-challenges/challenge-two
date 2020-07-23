@@ -22,7 +22,7 @@ const Header = () => {
       variant="light"
       expand="lg"
       sticky="top"
-      className="pt-sm-4 bg-white"
+      className="pt-sm-4 pb-sm-3 m-0 bg-gradient-1"
     >
       <Navbar.Brand href="/">
         <img

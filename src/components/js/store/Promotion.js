@@ -11,7 +11,7 @@ const Promotion = (props) => {
         <img
           src={props.promotion["image_url"]}
           alt="promotion"
-          className="d-block mx-auto my-md-3 shadow"
+          className="d-block mx-auto mb-md-3 shadow"
         />
       </a>
     </div>

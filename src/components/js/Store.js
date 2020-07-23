@@ -37,7 +37,7 @@ const Store = (props) => {
     });
   }, []);
   return (
-    <div id="store">
+    <div id="store" className="bg-gradient-1 mt-0 pb-sm-3">
       <LoadingOverlay
         active={!(promotion && prizes)}
         spinner /* ={<img src={Logo} alt="YouthComputing logo" />} */

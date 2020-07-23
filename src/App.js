@@ -19,7 +19,7 @@ import "./App.css";
 
 function App(props) {
   return (
-    <div className="bg-gradient-1">
+    <div>
       <UserContextProvider>
         <Router>
           <SearchContextProvider>
