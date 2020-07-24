@@ -10,5 +10,6 @@ const firebaseAuthConfig = {
 
 firebase.initializeApp(firebaseAuthConfig);
 const auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 export const FirebaseContext = createContext({ auth });
