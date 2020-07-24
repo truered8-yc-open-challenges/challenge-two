@@ -92,7 +92,7 @@ const PrizeList = (props) => {
           id="prize-sorter"
           variant="info"
           onClick={() => setLowToHigh(!lowToHigh)}
-          className="display-block float-right mx-sm-4 mt-0 mb-sm-1 rounded-pill"
+          className="display-block float-right shadow mx-sm-4 mt-0 mb-sm-1 rounded-pill"
         >
           Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
         </Button>
