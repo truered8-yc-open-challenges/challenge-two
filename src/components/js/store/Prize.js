@@ -52,8 +52,11 @@ const Prize = (props) => {
   };
 
   const [imageLoaded, _setImageLoaded] = useState(false);
+  const prizeClassName = `prize w-${
+    props.isMobile ? "100" : "25"
+  } p-sm-1 m-0 d-inline-block rounded-lg`;
   return (
-    <div className="prize w-25 p-sm-1 m-0 d-inline-block rounded-lg">
+    <div className={prizeClassName}>
       <PrizeModal
         prizeJson={props.prizeJson}
         message={message}

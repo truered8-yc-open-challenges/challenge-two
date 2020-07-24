@@ -17,7 +17,7 @@ const loaderStyle = `
 const PrizeList = (props) => {
   const [lowToHigh, setLowToHigh] = useState(true);
 
-  const isMobile = window.screen.orientation === "portrait";
+  const isMobile = window.screen.orientation.type === "portrait-primary";
   const numPrizeIncrement = isMobile ? 1 : 4;
   const [numPrizes, _setNumPrizes] = useState(numPrizeIncrement);
   const [availablePrizes, _setAvailablePrizes] = useState(
