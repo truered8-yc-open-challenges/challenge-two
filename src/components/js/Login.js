@@ -17,7 +17,7 @@ const Login = (props) => {
   };
 
   const { auth } = useContext(FirebaseContext);
-  const { setUserData } = useContext(UserContext);
+  const { updateUserData } = useContext(UserContext);
 
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
@@ -40,7 +40,7 @@ const Login = (props) => {
           .then((response) => response.json())
           .then((response) => {
             if (!response["error"]) {
-              setUserData(response["userData"]);
+              updateUserData(response["userData"]);
               props.history.push(ROUTES.STORE);
             } else {
               updateErrorMessage(response["message"]);

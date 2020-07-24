@@ -20,7 +20,7 @@ const Signup = (props) => {
   };
 
   const { auth } = useContext(FirebaseContext);
-  const { setUserData } = useContext(UserContext);
+  const { updateUserData } = useContext(UserContext);
 
   const [firstName, _setFirstName] = useState("");
   const [lastName, _setLastName] = useState("");
@@ -57,7 +57,7 @@ const Signup = (props) => {
               .then((response) => response.json())
               .then((response) => {
                 if (!response["error"]) {
-                  setUserData(response["userData"]);
+                  updateUserData(response["userData"]);
                   props.history.push(ROUTES.STORE);
                 } else {
                   _setErrorMessage(response["message"]);

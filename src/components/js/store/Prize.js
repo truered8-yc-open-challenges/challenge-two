@@ -18,7 +18,7 @@ const Prize = (props) => {
   const [message, _setMessage] = useState();
   const [success, _setSuccess] = useState(false);
 
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData, updateUserData } = useContext(UserContext);
   const onClick = () => {
     _setShow(true);
     if (userData)
@@ -38,7 +38,7 @@ const Prize = (props) => {
             fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
               .then((response) => response.json())
               .then((response) => {
-                setUserData(response["userData"]);
+                updateUserData(response["userData"]);
               });
           } else {
             _setMessage(response["message"]);

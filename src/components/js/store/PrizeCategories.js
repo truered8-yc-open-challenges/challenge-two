@@ -23,7 +23,7 @@ const PrizeCategory = (props) => {
 const PrizeCategories = (props) => {
   return (
     <div id="prize-categories" className="w-100 p-sm-2">
-      {Object.entries(categories).map(([key, value]) => (
+      {Object.entries(categories).map(([, value]) => (
         <PrizeCategory
           name={value}
           key={value}
