@@ -6,7 +6,7 @@ import debounce from "lodash.debounce";
 import Prize from "./Prize";
 
 import { SearchContext } from "./../../../contexts/SearchContext";
-import { categories } from "./../../../constants/categories";
+import { categories } from "../../../constants/helpers";
 
 const loaderStyle = `
   display: block;

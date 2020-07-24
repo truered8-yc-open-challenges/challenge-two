@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-import { categories } from "./../../../constants/categories";
+import { categories } from "./../../../constants/helpers";
 
 const PrizeCategory = (props) => {
   return (
