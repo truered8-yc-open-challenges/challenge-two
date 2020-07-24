@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { withRouter } from "react-router-dom";
 
@@ -10,6 +10,13 @@ import * as ROUTES from "./../../constants/routes";
 import "./../css/Login_signup.css";
 
 const Signup = (props) => {
+  const { auth } = useContext(FirebaseContext);
+  const { userData, updateUserData } = useContext(UserContext);
+
+  useEffect(() => {
+    userData && props.history.push(ROUTES.STORE);
+  }, [userData, props.history]);
+
   const [showPassword, _setShowPassword] = useState(false);
   const [showConfirm, _setShowConfirm] = useState(false);
   const _toggleShowPassword = () => {
@@ -18,9 +25,6 @@ const Signup = (props) => {
   const _toggleShowConfirm = () => {
     _setShowConfirm(!showConfirm);
   };
-
-  const { auth } = useContext(FirebaseContext);
-  const { updateUserData } = useContext(UserContext);
 
   const [firstName, _setFirstName] = useState("");
   const [lastName, _setLastName] = useState("");
@@ -58,7 +62,6 @@ const Signup = (props) => {
               .then((response) => {
                 if (!response["error"]) {
                   updateUserData(response["userData"]);
-                  props.history.push(ROUTES.STORE);
                 } else {
                   _setErrorMessage(response["message"]);
                 }

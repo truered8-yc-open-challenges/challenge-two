@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { withRouter } from "react-router-dom";
 
@@ -11,13 +11,17 @@ import { formattedErrors } from "../../constants/helpers";
 import "../css/Login_signup.css";
 
 const Login = (props) => {
+  const { auth } = useContext(FirebaseContext);
+  const { userData, updateUserData } = useContext(UserContext);
+
+  useEffect(() => {
+    userData && props.history.push(ROUTES.STORE);
+  }, [userData, props.history]);
+
   const [showPassword, _setShowPassword] = useState(false);
   const _toggleShowPassword = () => {
     _setShowPassword(!showPassword);
   };
-
-  const { auth } = useContext(FirebaseContext);
-  const { updateUserData } = useContext(UserContext);
 
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
@@ -41,7 +45,6 @@ const Login = (props) => {
           .then((response) => {
             if (!response["error"]) {
               updateUserData(response["userData"]);
-              props.history.push(ROUTES.STORE);
             } else {
               updateErrorMessage(response["message"]);
             }
