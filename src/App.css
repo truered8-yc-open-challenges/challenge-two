@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  z-index: 1;
 }
 
 body,
@@ -9,5 +10,20 @@ body,
 }
 
 .bg-gradient-1 {
-  background: linear-gradient(45deg, #fff 0%, #eee 100%);
+  background: linear-gradient(to right, #fff 0%, #eee 100%);
+  /* background: linear-gradient(
+    90.11deg,
+    #eb665e 11.5%,
+    #6bf183 35.3%,
+    #55f5cf 59.88%,
+    rgba(7, 126, 152, 0.85) 80.95%
+  ); */
+}
+
+#background-image {
+  width: 100vw;
+  mix-blend-mode: multiply;
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
 }

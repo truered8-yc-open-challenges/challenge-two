@@ -86,18 +86,18 @@ const PrizeList = (props) => {
   );
 
   return (
-    <div>
+    <div className="mt-sm-3">
       {displayPrizes.length > 1 && (
         <Button
           id="prize-sorter"
           variant="info"
           onClick={() => setLowToHigh(!lowToHigh)}
-          className="display-block float-right mx-sm-2"
+          className="display-block float-right shadow mx-sm-4 mt-0 mb-sm-1 rounded-pill"
         >
           Sort: {lowToHigh ? <SortNumericDown /> : <SortNumericUp />}
         </Button>
       )}
-      <div id="prize-list" className="d-inline-block">
+      <div id="prize-list" className="d-inline-block mx-sm-3">
         {displayPrizes}
       </div>
       <DotLoader css={loaderStyle} color={"#123abc"} loading={loading} />

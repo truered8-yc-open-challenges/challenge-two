@@ -6,10 +6,15 @@ import { categories } from "./../../../constants/helpers";
 const PrizeCategory = (props) => {
   return (
     <Button
-      variant={props.selected === props.name ? "primary" : ""}
-      className={`${props.selected === props.name ? "bg-blue" : "bg-red"}`}
+      className={`border-0 shadow m-sm-2 rounded-pill ${
+        props.selected === props.name
+          ? "bg-blue text-white"
+          : "bg-white text-body"
+      }`}
       onClick={() => props.setSelected(props.name)}
-      style={{ width: `${100 / Object.entries(categories).length}%` }}
+      style={{
+        width: `calc(${100 / Object.entries(categories).length}% - 1em)`,
+      }}
     >
       {props.name}
     </Button>

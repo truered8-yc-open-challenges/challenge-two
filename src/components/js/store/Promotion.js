@@ -2,7 +2,7 @@ import React from "react";
 
 const Promotion = (props) => {
   return (
-    <div id="promotion">
+    <div id="promotion" className="w-100 m-0">
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -11,7 +11,7 @@ const Promotion = (props) => {
         <img
           src={props.promotion["image_url"]}
           alt="promotion"
-          className="m-0"
+          className="d-block mx-auto mb-md-3 shadow"
         />
       </a>
     </div>

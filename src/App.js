@@ -14,6 +14,7 @@ import UserContextProvider from "./contexts/UserContext";
 
 import * as ROUTES from "./constants/routes";
 
+import Waves from "./waves.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -31,6 +32,7 @@ function App() {
             <Route path={ROUTES.LOGOUT} component={Logout} />
             <Route path={ROUTES.SIGNUP} component={Signup} />
           </div>
+          <img id="background-image" src={Waves} alt="background" />
           <Footer />
         </Router>
       </UserContextProvider>
