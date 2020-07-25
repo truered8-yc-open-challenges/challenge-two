@@ -77,19 +77,19 @@ const Signup = (props) => {
   return (
     <Container>
       <div id="signupbody" className="bg-white">
-        <h2 className="logintab">
+        <h2 className="logintab  position-relative">
           <a href="/login" className="text-secondary">
             Login
           </a>
         </h2>
         <h2 className="signuptab text-dark">Signup</h2>
-        <div className="horizontal-line2"></div>
+        <div className="horizontal-line2  position-relative bg-dark"></div>
         <br></br>
         <form>
-          <label for="fnamesignup" className="accountlabel-f">
+          <label for="fnamesignup" className="accountlabel-f text-black">
             First name:
           </label>
-          <label for="lnamesignup" className="accountlabel-l">
+          <label for="lnamesignup" className="accountlabel-l text-black">
             Last name:
           </label>
           <br></br>
@@ -99,7 +99,7 @@ const Signup = (props) => {
             value={firstName}
             onChange={(event) => _setFirstName(event.target.value)}
             placeholder="  Enter first name here..."
-            className="accountinput-s accountinput"
+            className="accountinput-s accountinput  position-relative"
             name="fnamesignup"
           ></input>
           <input
@@ -108,12 +108,12 @@ const Signup = (props) => {
             value={lastName}
             onChange={(event) => _setLastName(event.target.value)}
             placeholder="  Enter last name here..."
-            className="accountinput-s accountinput"
+            className="accountinput-s accountinput  position-relative"
             name="lnamesignup"
           ></input>
           <br></br>
           <br></br>
-          <label for="emailsignup" className="accountlabel-f">
+          <label for="emailsignup" className="accountlabel-f text-black">
             Email:
           </label>
           <br></br>
@@ -123,15 +123,15 @@ const Signup = (props) => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="accountinput-l accountinput"
+            className="accountinput-l accountinput  position-relative"
             name="emailsignup"
           ></input>
           <br></br>
           <br></br>
-          <label for="pwdsignup" className="accountlabel-f">
+          <label for="pwdsignup" className="accountlabel-f text-black">
             Password:
           </label>
-          <label for="pwd2signup" className="accountlabel-l">
+          <label for="pwd2signup" className="accountlabel-l text-black">
             Confirm Password:
           </label>
           <br></br>
@@ -141,7 +141,7 @@ const Signup = (props) => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="accountinput-s accountinput"
+            className="accountinput-s accountinput  position-relative"
             name="pwdsignup"
           ></input>
           <input
@@ -150,22 +150,28 @@ const Signup = (props) => {
             value={confirm}
             onChange={(event) => _setConfirm(event.target.value)}
             placeholder="  Enter password again here..."
-            className="accountinput-s accountinput"
+            className="accountinput-s accountinput  position-relative"
             name="pwd2signup"
           ></input>
-          <span onClick={_toggleShowPassword} className="show">
+          <span
+            onClick={_toggleShowPassword}
+            className="show  position-relative"
+          >
             {showPassword ? "Hide" : "Show"}
           </span>
-          <span onClick={_toggleShowConfirm} className="show2">
+          <span
+            onClick={_toggleShowConfirm}
+            className="show2  position-relative"
+          >
             {showConfirm ? "Hide" : "Show"}
           </span>
           <button
             onClick={onSubmit}
             disabled={!isValid()}
             type="button"
-            className="enterbtn"
+            className="enterbtn position-relative"
           >
-            <p>Sign Up!</p>
+            <p className="text-white">Sign Up!</p>
           </button>
           <p className="text-center">
             Already have an account? <a href="/login">Login</a>
