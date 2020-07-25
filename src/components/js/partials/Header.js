@@ -28,15 +28,22 @@ const Header = (props) => {
       sticky="top"
       className="pt-sm-4 mb-sm-3 m-0 bg-gradient-1"
     >
-      <Navbar.Brand href="/">
-        <img
-          src={Logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          alt="YouthComputing logo"
-        />
-        Store
+      <Navbar.Brand>
+        <Button
+          id="header-brand"
+          variant="link"
+          onClick={() => props.history.push(ROUTES.STORE)}
+          className="text-body shadow-none"
+        >
+          <img
+            src={Logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            alt="YouthComputing logo"
+          />
+          Store
+        </Button>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -45,14 +52,14 @@ const Header = (props) => {
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.STORE)}
-              className="text-secondary shadow-none"
+              className="text-secondary shadow-none p-sm-1"
             >
               Home
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.LOGOUT)}
-              className="text-secondary shadow-none"
+              className="text-secondary shadow-none p-sm-1"
             >
               Logout
             </Button>
@@ -62,21 +69,21 @@ const Header = (props) => {
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.STORE)}
-              className="text-secondary shadow-none"
+              className="text-secondary shadow-none p-sm-1"
             >
               Home
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.LOGIN)}
-              className="text-secondary shadow-none"
+              className="text-secondary shadow-none p-sm-1"
             >
               Login
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.SIGNUP)}
-              className="text-secondary shadow-none"
+              className="text-secondary shadow-none p-sm-1"
             >
               Sign Up
             </Button>
