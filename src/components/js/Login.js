@@ -11,7 +11,7 @@ import { formattedErrors } from "../../constants/helpers";
 import "../css/Login_signup.css";
 
 const Login = (props) => {
-  const { auth } = useContext(FirebaseContext);
+  const { auth, persistence } = useContext(FirebaseContext);
   const { userData, updateUserData } = useContext(UserContext);
 
   useEffect(() => {
@@ -37,25 +37,27 @@ const Login = (props) => {
   };
 
   const onSubmit = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
-          .then((response) => response.json())
-          .then((response) => {
-            if (!response["error"]) {
-              updateUserData(response["userData"]);
-            } else {
-              updateErrorMessage(response["message"]);
-            }
-          })
-          .catch((error) => {
-            updateErrorMessage(error.message);
-          });
-      })
-      .catch((error) => {
-        updateErrorMessage(error.message);
-      });
+    auth.setPersistence(persistence.SESSION).then(() =>
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((authUser) => {
+          fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
+            .then((response) => response.json())
+            .then((response) => {
+              if (!response["error"]) {
+                updateUserData(response["userData"]);
+              } else {
+                updateErrorMessage(response["message"]);
+              }
+            })
+            .catch((error) => {
+              updateErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          updateErrorMessage(error.message);
+        })
+    );
   };
   return (
     <Container>
