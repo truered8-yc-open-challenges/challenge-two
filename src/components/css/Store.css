@@ -1,3 +1,7 @@
+#store * {
+  font-family: Arial;
+}
+
 #promotion img {
   box-sizing: border-box;
   border-radius: 1em;

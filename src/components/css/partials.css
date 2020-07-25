@@ -1,4 +1,14 @@
-img {
+#header * {
+  font-family: Abel;
+  font-size: 18px;
+}
+
+#header-brand {
+  font-size: 22px;
+  text-decoration: none;
+}
+
+#header img {
   margin-right: 0.5em;
   background-color: white;
 }
@@ -9,7 +19,9 @@ img {
   text-align: center;
   text-decoration: none;
 }
-
+#profile-popover Button {
+  font-size: 15px;
+}
 #points {
   background-color: whitesmoke;
   color: grey;
@@ -24,4 +36,8 @@ img {
 #points:hover {
   background-color: grey;
   color: whitesmoke;
+}
+
+footer {
+  font-family: Chivo;
 }
