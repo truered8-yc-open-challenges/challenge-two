@@ -1,5 +1,6 @@
 #loginbody,
-#signupbody {
+#signupbody,
+#logout {
   position: absolute;
   top: 15%;
   width: 60%;
@@ -45,6 +46,14 @@
   height: 0.0651vw;
   background-color: black;
   width: 20%;
+}
+#logout {
+  position: absolute;
+  top: 20%;
+  font-family: Abel;
+  font-size: 3.255vw;
+  line-height: 4.166vw;
+  letter-spacing: -0.015em;
 }
 
 .accountlabel-f {
@@ -180,4 +189,9 @@
 .show3:hover {
   color: #222c6a;
   opacity: 1;
+}
+
+#logout Button {
+  font-size: 2.1vw;
+  letter-spacing: -0.015em;
 }

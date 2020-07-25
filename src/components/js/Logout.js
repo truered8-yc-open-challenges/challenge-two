@@ -1,9 +1,15 @@
 import React, { useEffect, useContext, useState } from "react";
+import Button from "react-bootstrap/Button";
+import { withRouter } from "react-router-dom";
 
 import { FirebaseContext } from "../../contexts/FirebaseContext";
 import { UserContext } from "./../../contexts/UserContext";
 
-const Logout = () => {
+import * as ROUTES from "./../../constants/routes";
+
+import "../css/Login_signup.css";
+
+const Logout = (props) => {
   const { auth } = useContext(FirebaseContext);
   const { updateUserData } = useContext(UserContext);
 
@@ -18,7 +24,19 @@ const Logout = () => {
 
   useEffect(logUserOut, []);
 
-  return <div id="logout">{message}</div>;
+  return (
+    <div id="logout" className="bg-white text-center">
+      <div id="logout-heading" className="p-sm-3 pt-sm-5">
+        {message}
+      </div>
+      <Button
+        className="bg-white text-body border-dark shadow mb-md-5 mt-sm-4 py-sm-1 px-sm-5 rounded-pill"
+        onClick={() => props.history.push(ROUTES.STORE)}
+      >
+        Return to Store
+      </Button>
+    </div>
+  );
 };
 
-export default Logout;
+export default withRouter(Logout);
