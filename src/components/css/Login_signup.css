@@ -18,6 +18,14 @@
   line-height: 4.166vw;
   letter-spacing: -0.015em;
 }
+.logintab2,
+.logintab2 Button {
+  left: 28.75%;
+  font-family: Abel;
+  font-size: 3.255vw;
+  line-height: 4.166vw;
+  letter-spacing: -0.015em;
+}
 .signuptab,
 .signuptab Button {
   position: absolute;

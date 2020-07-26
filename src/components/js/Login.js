@@ -65,7 +65,6 @@ const Login = (props) => {
   return (
     <Container>
       <div id="loginbody" className="bg-white">
-        <div> </div>
         <h2 className="logintab text-dark position-relative">Login</h2>
         <div className="horizontal-line position-relative bg-dark" />
         <h2 className="signuptab">
