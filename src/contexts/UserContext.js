@@ -3,12 +3,33 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 export default (props) => {
+  const [remember, _setRemember] = useState(
+    JSON.parse(localStorage.getItem("remember"))
+      ? JSON.parse(localStorage.getItem("remember"))
+      : false
+  );
+  const updateRemember = (newRemember) => {
+    _setRemember(newRemember);
+    localStorage.setItem("remember", JSON.stringify(newRemember));
+    switch (remember) {
+      case true:
+        sessionStorage.removeItem("userData");
+        break;
+      default:
+        localStorage.removeItem("userData");
+        break;
+    }
+  };
+
   const [userData, _setUserData] = useState(
-    JSON.parse(sessionStorage.getItem("userData"))
+    JSON.parse((remember ? localStorage : sessionStorage).getItem("userData"))
   );
   const updateUserData = (newUserData) => {
     _setUserData(newUserData);
-    sessionStorage.setItem("userData", JSON.stringify(newUserData));
+    (remember ? localStorage : sessionStorage).setItem(
+      "userData",
+      JSON.stringify(newUserData)
+    );
   };
   const initUserData = () => {
     console.log(userData);
@@ -23,7 +44,9 @@ export default (props) => {
   useEffect(initUserData, []);
 
   return (
-    <UserContext.Provider value={{ userData, updateUserData }}>
+    <UserContext.Provider
+      value={{ remember, updateRemember, userData, updateUserData }}
+    >
       {props.children}
     </UserContext.Provider>
   );

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import { withRouter } from "react-router-dom";
 
 import { FirebaseContext } from "../../contexts/FirebaseContext";
@@ -13,7 +14,9 @@ import "../css/Login_signup.css";
 
 const Login = (props) => {
   const { auth, persistence } = useContext(FirebaseContext);
-  const { userData, updateUserData } = useContext(UserContext);
+  const { remember, updateRemember, userData, updateUserData } = useContext(
+    UserContext
+  );
 
   useEffect(() => {
     userData && props.history.push(ROUTES.STORE);
@@ -35,32 +38,40 @@ const Login = (props) => {
     else _setErrorMessage(message);
   };
 
+  const [loading, _setLoading] = useState(false);
+
   const isValid = () => {
     return email !== "" && password !== "";
   };
 
   const onSubmit = () => {
-    auth.setPersistence(persistence.SESSION).then(() =>
-      auth
-        .signInWithEmailAndPassword(email, password)
-        .then((authUser) => {
-          fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
-            .then((response) => response.json())
-            .then((response) => {
-              if (!response["error"]) {
-                updateUserData(response["userData"]);
-              } else {
-                updateErrorMessage(response["message"]);
-              }
-            })
-            .catch((error) => {
-              updateErrorMessage(error.message);
-            });
-        })
-        .catch((error) => {
-          updateErrorMessage(error.message);
-        })
-    );
+    _setLoading(true);
+    auth
+      .setPersistence(remember ? persistence.LOCAL : persistence.SESSION)
+      .then(() =>
+        auth
+          .signInWithEmailAndPassword(email, password)
+          .then((authUser) => {
+            fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
+              .then((response) => response.json())
+              .then((response) => {
+                if (!response["error"]) {
+                  updateUserData(response["userData"]);
+                } else {
+                  updateErrorMessage(response["message"]);
+                }
+                _setLoading(false);
+              })
+              .catch((error) => {
+                updateErrorMessage(error.message);
+                _setLoading(false);
+              });
+          })
+          .catch((error) => {
+            updateErrorMessage(error.message);
+            _setLoading(false);
+          })
+      );
   };
   return (
     <Container>
@@ -121,6 +132,10 @@ const Login = (props) => {
           <input
             type="checkbox"
             id="remember-me"
+            checked={remember}
+            onChange={(event) => {
+              updateRemember(!remember);
+            }}
             className="position-relative"
             name="remember-me"
           ></input>
@@ -134,7 +149,13 @@ const Login = (props) => {
             type="button"
             className="enterbtn  position-relative"
           >
-            <p className="text-white">Login!</p>
+            <p className="text-white">
+              {loading ? (
+                <Spinner animation="border" size="md" className="mb-sm-1" />
+              ) : (
+                "Login!"
+              )}
+            </p>
           </button>
           <p className="text-center">
             Don't have an account?{" "}
