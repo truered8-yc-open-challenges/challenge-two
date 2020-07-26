@@ -48,33 +48,38 @@ const Login = (props) => {
   };
 
   const onSubmit = () => {
-    _setLoading(true);
-    auth
-      .setPersistence(remember ? persistence.LOCAL : persistence.SESSION)
-      .then(() =>
-        auth
-          .signInWithEmailAndPassword(email, password)
-          .then((authUser) => {
-            fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
-              .then((response) => response.json())
-              .then((response) => {
-                if (!response["error"]) {
-                  updateUserData(response["userData"]);
-                } else {
-                  updateErrorMessage(response["message"]);
-                }
-                _setLoading(false);
-              })
-              .catch((error) => {
-                updateErrorMessage(error.message);
-                _setLoading(false);
-              });
-          })
-          .catch((error) => {
-            updateErrorMessage(error.message);
-            _setLoading(false);
-          })
-      );
+    if (isValid()) {
+      _setLoading(true);
+      auth
+        .setPersistence(remember ? persistence.LOCAL : persistence.SESSION)
+        .then(() =>
+          auth
+            .signInWithEmailAndPassword(email, password)
+            .then((authUser) => {
+              fetch(`https://api.youthcomputing.ca/users/${authUser.user.uid}`)
+                .then((response) => response.json())
+                .then((response) => {
+                  if (!response["error"]) {
+                    updateUserData(response["userData"]);
+                  } else {
+                    updateErrorMessage(response["message"]);
+                  }
+                  _setLoading(false);
+                })
+                .catch((error) => {
+                  updateErrorMessage(error.message);
+                  _setLoading(false);
+                });
+            })
+            .catch((error) => {
+              updateErrorMessage(error.message);
+              _setLoading(false);
+            })
+        );
+    } else {
+      if (email === "") updateErrorMessage("Email cannot be blank!");
+      else updateErrorMessage("Password cannot be blank!");
+    }
   };
   return (
     <Container>
@@ -148,7 +153,7 @@ const Login = (props) => {
           <br></br>
           <button
             onClick={onSubmit}
-            disabled={!isValid()}
+            disabled={loading}
             type="button"
             className="enterbtn  position-relative"
           >

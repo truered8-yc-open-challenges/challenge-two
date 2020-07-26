@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import { withRouter } from "react-router-dom";
 
 import { FirebaseContext } from "./../../../contexts/FirebaseContext";
@@ -36,6 +37,7 @@ const Signup = (props) => {
   const [loginHover, _setLoginHover] = useState(false);
 
   const [errorMessage, _setErrorMessage] = useState(null);
+  const [loading, _setLoading] = useState(false);
 
   const isValid = () => {
     return (
@@ -49,6 +51,7 @@ const Signup = (props) => {
 
   const onSubmit = () => {
     if (isValid()) {
+      _setLoading(true);
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((authUser) => {
@@ -68,19 +71,28 @@ const Signup = (props) => {
                 } else {
                   _setErrorMessage(response["message"]);
                 }
+                _setLoading(false);
               });
           });
         })
         .catch((error) => {
           _setErrorMessage(error.message);
+          _setLoading(false);
         });
+    } else {
+      if (password !== confirm) _setErrorMessage("Passwords do not match!");
+      else if (firstName === "")
+        _setErrorMessage("First name cannot be left blank!");
+      else if (email === "") _setErrorMessage("Email cannot be left blank!");
+      else if (password === "")
+        _setErrorMessage("Password cannot be left blank!");
     }
   };
 
   return (
     <Container>
       <div id="signupbody" className="bg-white">
-        <h2 className="logintab2  position-relative">
+        <h2 className="logintab2 position-relative">
           <Button
             variant="link"
             onClick={() => props.history.push(ROUTES.LOGIN)}
@@ -96,7 +108,7 @@ const Signup = (props) => {
           className="horizontal-line position-relative bg-secondary"
         />
         <h2 className="signuptab text-dark">Signup</h2>
-        <div className="horizontal-line2  position-relative bg-dark"></div>
+        <div className="horizontal-line2 position-relative bg-dark"></div>
         <br></br>
         <form>
           <label for="fnamesignup" className="accountlabel-f text-black">
@@ -182,11 +194,17 @@ const Signup = (props) => {
           </span>
           <button
             onClick={onSubmit}
-            disabled={!isValid()}
+            disabled={loading}
             type="button"
             className="enterbtn position-relative"
           >
-            <p className="text-white">Sign Up!</p>
+            <p className="text-white">
+              {loading ? (
+                <Spinner animation="border" size="md" className="mb-sm-1" />
+              ) : (
+                "Sign Up!"
+              )}
+            </p>
           </button>
           <p className="text-center">
             Already have an account?{" "}
