@@ -136,7 +136,7 @@ const Login = (props) => {
             type="checkbox"
             id="remember-me"
             checked={remember}
-            onChange={(event) => {
+            onChange={() => {
               updateRemember(!remember);
             }}
             className="position-relative"
@@ -152,13 +152,11 @@ const Login = (props) => {
             type="button"
             className="enterbtn  position-relative"
           >
-            <p className="text-white">
-              {loading ? (
-                <Spinner animation="border" size="md" className="mb-sm-1" />
-              ) : (
-                "Login!"
-              )}
-            </p>
+            {loading ? (
+              <Spinner animation="border" size="md" className="mb-sm-1" />
+            ) : (
+              <p className="text-white">Login!</p>
+            )}
           </button>
           <p className="text-center">
             Don't have an account?{" "}

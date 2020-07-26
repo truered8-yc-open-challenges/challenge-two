@@ -75,13 +75,13 @@ const ForgotPasswordModal = (props) => {
             Close
           </Button>
           {!sent && (
-            <Button variant="primary" onClick={onSubmit}>
+            <Button variant="primary" onClick={onSubmit} disabled={loading}>
               {loading ? (
                 <div id="loading-promotion">
                   <Spinner animation="border" size="sm" />
                 </div>
               ) : (
-                "Next"
+                "Submit"
               )}
             </Button>
           )}
