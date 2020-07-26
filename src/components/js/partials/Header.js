@@ -12,7 +12,7 @@ import { SearchContext } from "./../../../contexts/SearchContext";
 import * as ROUTES from "./../../../constants/routes";
 
 import Logo from "./../../../logo.svg";
-import "./../../css/partials.css";
+import "./../../css/Partials.css";
 
 const Header = (props) => {
   const { userData } = useContext(UserContext);

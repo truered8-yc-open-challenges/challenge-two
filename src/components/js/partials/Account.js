@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 import { UserContext } from "./../../../contexts/UserContext";
 import * as ROUTES from "./../../../constants/routes";
 
-import "../../css/partials.css";
+import "../../css/Partials.css";
 
 const Account = (props) => {
   const [showEvent, _setShowEvent] = useState(false);
