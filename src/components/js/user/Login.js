@@ -5,13 +5,13 @@ import Spinner from "react-bootstrap/Spinner";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 import { withRouter } from "react-router-dom";
 
-import { FirebaseContext } from "../../contexts/FirebaseContext";
-import { UserContext } from "./../../contexts/UserContext";
+import { FirebaseContext } from "./../../../contexts/FirebaseContext";
+import { UserContext } from "./../../../contexts/UserContext";
 
-import * as ROUTES from "./../../constants/routes";
-import { formattedErrors } from "../../constants/helpers";
+import * as ROUTES from "./../../../constants/routes";
+import { formattedErrors } from "./../../../constants/helpers";
 
-import "../css/Login_signup.css";
+import "./../../css/User.css";
 
 const Login = (props) => {
   const { auth, persistence } = useContext(FirebaseContext);

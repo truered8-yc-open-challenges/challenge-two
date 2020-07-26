@@ -3,12 +3,12 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { withRouter } from "react-router-dom";
 
-import { FirebaseContext } from "./../../contexts/FirebaseContext";
-import { UserContext } from "./../../contexts/UserContext";
+import { FirebaseContext } from "./../../../contexts/FirebaseContext";
+import { UserContext } from "./../../../contexts/UserContext";
 
-import * as ROUTES from "./../../constants/routes";
+import * as ROUTES from "./../../../constants/routes";
 
-import "./../css/Login_signup.css";
+import "./../../css/User.css";
 
 const Signup = (props) => {
   const { auth } = useContext(FirebaseContext);

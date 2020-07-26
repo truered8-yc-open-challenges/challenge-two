@@ -4,7 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-import { FirebaseContext } from "../../contexts/FirebaseContext";
+import { FirebaseContext } from "../../../contexts/FirebaseContext";
+
+import "./../../css/User.css";
 
 const ForgotPasswordModal = (props) => {
   const [email, _setEmail] = useState("");

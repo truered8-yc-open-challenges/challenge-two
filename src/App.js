@@ -4,9 +4,9 @@ import { Route } from "react-router-dom";
 
 import Header from "./components/js/partials/Header";
 import Footer from "./components/js/partials/Footer";
-import Login from "./components/js/Login";
-import Logout from "./components/js/Logout";
-import Signup from "./components/js/Signup";
+import Login from "./components/js/user/Login";
+import Logout from "./components/js/user/Logout";
+import Signup from "./components/js/user/Signup";
 import Store from "./components/js/Store";
 
 import SearchContextProvider from "./contexts/SearchContext";
