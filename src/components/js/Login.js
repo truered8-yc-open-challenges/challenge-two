@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 import { withRouter } from "react-router-dom";
 
 import { FirebaseContext } from "../../contexts/FirebaseContext";
@@ -29,6 +30,8 @@ const Login = (props) => {
 
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
+
+  const [forgotPasswordOpen, _setForgotPasswordOpen] = useState(false);
 
   const [signupHover, _setSignupHover] = useState(false);
 
@@ -165,6 +168,18 @@ const Login = (props) => {
             >
               Signup
             </Button>
+            <br />
+            <Button
+              variant="link"
+              onClick={() => _setForgotPasswordOpen(true)}
+              className="shadow-none mb-sm-1 p-0"
+            >
+              Forgot Password?
+            </Button>
+            <ForgotPasswordModal
+              show={forgotPasswordOpen}
+              handleClose={() => _setForgotPasswordOpen(false)}
+            />
           </p>
         </form>
         {errorMessage && (
