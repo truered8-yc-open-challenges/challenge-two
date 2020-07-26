@@ -9,7 +9,8 @@
   box-shadow: 0.2604vw 0vw 0.2604vw 0.2604vw rgba(0, 0, 0, 0.25);
 }
 
-.logintab {
+.logintab,
+.logintab Button {
   left: 28.75%;
   margin-top: 1%;
   font-family: Abel;
@@ -17,7 +18,8 @@
   line-height: 4.166vw;
   letter-spacing: -0.015em;
 }
-.signuptab {
+.signuptab,
+.signuptab Button {
   position: absolute;
   left: 59%;
   top: 1%;

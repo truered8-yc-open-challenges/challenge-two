@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { withRouter } from "react-router-dom";
 
@@ -25,6 +26,8 @@ const Login = (props) => {
 
   const [email, _setEmail] = useState("");
   const [password, _setPassword] = useState("");
+
+  const [signupHover, _setSignupHover] = useState(false);
 
   const [errorMessage, _setErrorMessage] = useState(null);
   const updateErrorMessage = (message) => {
@@ -64,12 +67,22 @@ const Login = (props) => {
       <div id="loginbody" className="bg-white">
         <div> </div>
         <h2 className="logintab text-dark position-relative">Login</h2>
-        <div className="horizontal-line  position-relative bg-dark"></div>
+        <div className="horizontal-line position-relative bg-dark" />
         <h2 className="signuptab">
-          <a href="/signup" className="text-secondary">
+          <Button
+            variant="link"
+            onClick={() => props.history.push(ROUTES.SIGNUP)}
+            onMouseEnter={() => _setSignupHover(true)}
+            onMouseLeave={() => _setSignupHover(false)}
+            className="text-secondary text-decoration-none shadow-none p-sm-1"
+          >
             Signup
-          </a>
+          </Button>
         </h2>
+        <div
+          style={signupHover ? {} : { display: "none" }}
+          className="horizontal-line2 position-relative bg-secondary"
+        />
         <form>
           <label for="emaillogin" className="accountlabel-f text-black">
             Email:
@@ -81,7 +94,7 @@ const Login = (props) => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="accountinput-l accountinput  position-relative"
+            className="accountinput-l accountinput position-relative"
             name="emaillogin"
           ></input>
           <br></br>
@@ -95,7 +108,7 @@ const Login = (props) => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="accountinput-l accountinput  position-relative"
+            className="accountinput-l accountinput position-relative"
             name="passwordlogin"
           ></input>
           <span
@@ -121,10 +134,17 @@ const Login = (props) => {
             type="button"
             className="enterbtn  position-relative"
           >
-            <p className="text-black">Login!</p>
+            <p className="text-white">Login!</p>
           </button>
           <p className="text-center">
-            Don't have an account? <a href="/signup">Sign up</a>
+            Don't have an account?{" "}
+            <Button
+              variant="link"
+              onClick={() => props.history.push(ROUTES.SIGNUP)}
+              className="shadow-none mb-sm-1 p-0"
+            >
+              Signup
+            </Button>
           </p>
         </form>
         {errorMessage && (
