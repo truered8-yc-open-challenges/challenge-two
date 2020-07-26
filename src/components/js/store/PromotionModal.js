@@ -39,13 +39,7 @@ const PromotionModal = (props) => {
   };
 
   return (
-    <Modal
-      id="promotion-modal"
-      show={props.show}
-      onHide={props.handleClose}
-      backdropClassName="position-fixed m-auto"
-      autoFocus
-    >
+    <Modal id="promotion-modal" show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Redeem Event</Modal.Title>
       </Modal.Header>
@@ -53,7 +47,7 @@ const PromotionModal = (props) => {
         <FormControl
           type="text"
           id="event-code"
-          className="rounded m-auto m-sm-2 p-sm-1"
+          className="rounded mx-auto m-sm-2 p-sm-1"
           value={code}
           onChange={(event) => _setCode(event.target.value)}
           placeholder="Enter event code"

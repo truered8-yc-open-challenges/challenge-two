@@ -36,13 +36,7 @@ const ForgotPasswordModal = (props) => {
 
   return (
     <div id="forgot-pw">
-      <Modal
-        id="forgot-pw-modal"
-        show={props.show}
-        onHide={onHide}
-        backdropClassName="position-fixed m-auto"
-        autoFocus
-      >
+      <Modal id="forgot-pw-modal" show={props.show} onHide={onHide}>
         <Modal.Header closeButton>
           <Modal.Title>Forgot password?</Modal.Title>
         </Modal.Header>

@@ -8,14 +8,6 @@
   width: calc(100% - 2.5em);
 }
 
-#promotion-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 #prize-categories {
   overflow: auto;
   white-space: nowrap;
@@ -34,12 +26,4 @@
 }
 .prize-name {
   min-height: 7em;
-}
-
-#prize-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }

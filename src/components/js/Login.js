@@ -125,8 +125,9 @@ const Login = (props) => {
             name="passwordlogin"
           ></input>
           <span
+            id="show3"
             onClick={_toggleShowPassword}
-            className="show3  position-relative"
+            className="position-relative"
           >
             {showPassword ? "Hide" : "Show"}
           </span>

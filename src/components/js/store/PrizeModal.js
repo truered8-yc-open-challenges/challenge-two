@@ -11,13 +11,7 @@ const loaderStyle = `
 
 const PrizeModal = (props) => {
   return (
-    <Modal
-      id="prize-modal"
-      show={props.show}
-      onHide={props.handleClose}
-      backdropClassName="position-fixed m-auto"
-      autoFocus
-    >
+    <Modal id="prize-modal" show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Prize</Modal.Title>
       </Modal.Header>

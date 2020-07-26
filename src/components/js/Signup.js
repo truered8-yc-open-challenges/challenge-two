@@ -167,14 +167,16 @@ const Signup = (props) => {
             name="pwd2signup"
           ></input>
           <span
+            id="show"
             onClick={_toggleShowPassword}
-            className="show position-relative"
+            className="position-relative"
           >
             {showPassword ? "Hide" : "Show"}
           </span>
           <span
+            id="show2"
             onClick={_toggleShowConfirm}
-            className="show2 position-relative"
+            className="position-relative"
           >
             {showConfirm ? "Hide" : "Show"}
           </span>

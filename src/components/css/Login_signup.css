@@ -141,9 +141,9 @@
   text-align: center;
   letter-spacing: -0.015em;
 }
-.show,
-.show2,
-.show3 {
+#show,
+#show2,
+#show3 {
   cursor: pointer;
   font-family: Abel;
   font-style: normal;
@@ -157,28 +157,28 @@
   z-index: 2;
   transition: opacity 250ms;
 }
-.show {
+#show:hover,
+#show2:hover,
+#show3:hover {
+  color: #222c6a;
+  opacity: 1;
+}
+#show {
   margin-left: -53%;
   width: 6%;
   display: inline-block;
   margin-bottom: -2%;
 }
-.show2 {
+#show2 {
   margin-left: 41%;
   width: 6%;
   display: inline-block;
 }
-.show3 {
+#show3 {
   margin-left: -6%;
   width: 6%;
   display: inline-block;
   margin-bottom: -2%;
-}
-.show:hover,
-.show2:hover,
-.show3:hover {
-  color: #222c6a;
-  opacity: 1;
 }
 
 #logout Button {
