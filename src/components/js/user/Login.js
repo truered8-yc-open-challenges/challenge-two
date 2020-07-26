@@ -152,11 +152,13 @@ const Login = (props) => {
             type="button"
             className="enterbtn  position-relative"
           >
-            {loading ? (
-              <Spinner animation="border" size="md" className="mb-sm-1" />
-            ) : (
-              <p className="text-white">Login!</p>
-            )}
+            <p className="text-white">
+              {loading ? (
+                <Spinner animation="border" size="md" className="mb-sm-1" />
+              ) : (
+                "Login!"
+              )}
+            </p>
           </button>
           <p className="text-center">
             Don't have an account?{" "}
