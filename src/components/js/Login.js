@@ -61,17 +61,17 @@ const Login = (props) => {
   };
   return (
     <Container>
-      <div id="signupbody" className="bg-white">
+      <div id="loginbody" className="bg-white">
         <div> </div>
-        <h2 className="logintab text-dark">Login</h2>
-        <div className="horizontal-line"></div>
+        <h2 className="logintab text-dark position-relative">Login</h2>
+        <div className="horizontal-line  position-relative bg-dark"></div>
         <h2 className="signuptab">
           <a href="/signup" className="text-secondary">
             Signup
           </a>
         </h2>
         <form>
-          <label for="emaillogin" className="accountlabel-f">
+          <label for="emaillogin" className="accountlabel-f text-black">
             Email:
           </label>
           <br></br>
@@ -81,11 +81,11 @@ const Login = (props) => {
             value={email}
             onChange={(event) => _setEmail(event.target.value)}
             placeholder="  Enter email here..."
-            className="accountinput-l accountinput"
+            className="accountinput-l accountinput  position-relative"
             name="emaillogin"
           ></input>
           <br></br>
-          <label for="passwordlogin" className="accountlabel-f accountinput">
+          <label for="passwordlogin" className="accountlabel-f text-black">
             Password:
           </label>
           <br></br>
@@ -95,19 +95,33 @@ const Login = (props) => {
             value={password}
             onChange={(event) => _setPassword(event.target.value)}
             placeholder="  Enter password here..."
-            className="accountinput-l accountinput"
+            className="accountinput-l accountinput  position-relative"
             name="passwordlogin"
           ></input>
-          <span onClick={_toggleShowPassword} className="show3">
+          <span
+            onClick={_toggleShowPassword}
+            className="show3  position-relative"
+          >
             {showPassword ? "Hide" : "Show"}
           </span>
+          <br></br>
+          <input
+            type="checkbox"
+            id="remember-me"
+            className="position-relative"
+            name="remember-me"
+          ></input>
+          <label for="remember-me" id="remember-label">
+            Remember Me
+          </label>
+          <br></br>
           <button
             onClick={onSubmit}
             disabled={!isValid()}
             type="button"
-            className="enterbtn"
+            className="enterbtn  position-relative"
           >
-            <p>Login!</p>
+            <p className="text-black">Login!</p>
           </button>
           <p className="text-center">
             Don't have an account? <a href="/signup">Sign up</a>

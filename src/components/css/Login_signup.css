@@ -10,12 +10,9 @@
 }
 
 .logintab {
-  position: relative;
   left: 28.75%;
   margin-top: 1%;
   font-family: Abel;
-  font-style: normal;
-  font-weight: normal;
   font-size: 3.255vw;
   line-height: 4.166vw;
   letter-spacing: -0.015em;
@@ -25,26 +22,20 @@
   left: 59%;
   top: 1%;
   font-family: Abel;
-  font-style: normal;
-  font-weight: normal;
   font-size: 3.255vw;
   line-height: 4.166vw;
   letter-spacing: -0.015em;
 }
 .horizontal-line {
-  position: relative;
   margin-top: 0.0651vw;
   margin-left: 24%;
   height: 0.0651vw;
-  background-color: black;
   width: 20%;
 }
 .horizontal-line2 {
-  position: relative;
   margin-top: -0.0651vw;
   margin-left: 56%;
   height: 0.0651vw;
-  background-color: black;
   width: 20%;
 }
 #logout {
@@ -57,36 +48,26 @@
 }
 
 .accountlabel-f {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 8%;
   font-family: Abel;
-  font-style: normal;
-  font-weight: normal;
   font-size: 1.9vw;
   line-height: 2.53vw;
   letter-spacing: -0.015em;
-
-  color: #000000;
 }
 .accountlabel-l {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 35%;
-
   font-family: Abel;
-  font-style: normal;
-  font-weight: normal;
   font-size: 1.9vw;
   line-height: 2.53vw;
   letter-spacing: -0.015em;
-
-  color: #000000;
 }
 .accountinput-s {
-  position: relative;
   width: 40%;
   height: 2.3vw;
   padding: 0.5vw;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
@@ -95,10 +76,9 @@
 }
 
 .accountinput-l {
-  position: relative;
   width: 86.6%;
   height: 2.3vw;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
@@ -109,22 +89,27 @@
   outline: none;
 }
 .accountinput::placeholder {
-  position: relative;
   font-family: Chivo;
   font-style: normal;
   font-weight: normal;
   font-size: 0.86vw;
   line-height: 1vw;
   letter-spacing: -0.015em;
-
   color: rgba(0, 0, 0, 0.3);
 }
+#remember-me {
+  margin-left: 6.6%;
+  margin-right: 0.5%;
+  margin-top: 2%;
+}
+#remember-label {
+  font-family: Abel;
+}
 .enterbtn {
-  position: relative;
   width: 70%;
   height: 2.3vw;
   margin-left: 15%;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 5%;
   background: #333333;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
@@ -145,8 +130,6 @@
   line-height: 1.8vw;
   text-align: center;
   letter-spacing: -0.015em;
-
-  color: #ffffff;
 }
 .show,
 .show2,
@@ -159,26 +142,23 @@
   font-size: 1.5vw;
   line-height: 1.8vw;
   letter-spacing: -0.015em;
-  position: relative;
+
   opacity: 0.5;
   z-index: 2;
   transition: opacity 250ms;
 }
 .show {
-  position: relative;
   margin-left: -53%;
   width: 6%;
   display: inline-block;
   margin-bottom: -2%;
 }
 .show2 {
-  position: relative;
   margin-left: 41%;
   width: 6%;
   display: inline-block;
 }
 .show3 {
-  position: relative;
   margin-left: -6%;
   width: 6%;
   display: inline-block;
