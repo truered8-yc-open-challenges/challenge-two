@@ -6,11 +6,23 @@ import Spinner from "react-bootstrap/Spinner";
 
 import { UserContext } from "./../../../contexts/UserContext";
 
+import { formattedErrors } from "./../../../constants/helpers";
+
 const PromotionModal = (props) => {
   const [code, _setCode] = useState("");
 
   const [success, _setSuccess] = useState(false);
   const [errorMessage, _setErrorMessage] = useState();
+  const updateErrorMessage = (message) => {
+    if (formattedErrors[message]) _setErrorMessage(formattedErrors[message]);
+    else _setErrorMessage(message);
+  };
+  const handleClose = () => {
+    props.handleClose();
+    _setSuccess(false);
+    updateErrorMessage();
+  };
+
   const [loading, _setLoading] = useState(false);
 
   const { userData, updateUserData } = useContext(UserContext);
@@ -33,15 +45,15 @@ const PromotionModal = (props) => {
             .then((response) => {
               updateUserData(response["userData"]);
             });
-          _setErrorMessage();
+          updateErrorMessage();
           _setSuccess(true);
-        } else _setErrorMessage(response["message"]);
+        } else updateErrorMessage(response["message"]);
         _setLoading(false);
       });
   };
 
   return (
-    <Modal id="promotion-modal" show={props.show} onHide={props.handleClose}>
+    <Modal id="promotion-modal" show={props.show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Redeem Event</Modal.Title>
       </Modal.Header>
@@ -66,7 +78,7 @@ const PromotionModal = (props) => {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.handleClose}>
+        <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
         {!success && (
