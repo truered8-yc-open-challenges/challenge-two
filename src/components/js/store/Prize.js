@@ -22,29 +22,38 @@ const Prize = (props) => {
   const onClick = () => {
     _setShow(true);
     if (userData)
-      fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
-        method: "PUT",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          userId: userData["id"],
-          prizeId: props.prizeJson["id"],
-        }),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          if (!response["error"]) {
-            _setMessage(`Successfully redeemed ${props.prizeJson["name"]}!`);
-            _setSuccess(true);
-            fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
-              .then((response) => response.json())
-              .then((response) => {
-                updateUserData(response["userData"]);
-              });
-          } else {
-            _setMessage(response["message"]);
-            _setSuccess(false);
-          }
-        });
+      if (userData["points"] >= props.prizeJson["points"])
+        fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            userId: userData["id"],
+            prizeId: props.prizeJson["id"],
+          }),
+        })
+          .then((response) => response.json())
+          .then((response) => {
+            if (!response["error"]) {
+              _setMessage(`Successfully redeemed ${props.prizeJson["name"]}!`);
+              _setSuccess(true);
+              fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
+                .then((response) => response.json())
+                .then((response) => {
+                  updateUserData(response["userData"]);
+                });
+            } else {
+              _setMessage(response["message"]);
+              _setSuccess(false);
+            }
+          });
+      else {
+        _setMessage(
+          `Sorry, you need ${
+            props.prizeJson["points"] - userData["points"]
+          } more points to redeem ${props.prizeJson["name"]}!`
+        );
+        _setSuccess(false);
+      }
     else {
       _setMessage("You must log in to redeem prizes!");
       _setSuccess(false);
