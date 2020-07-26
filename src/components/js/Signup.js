@@ -80,7 +80,7 @@ const Signup = (props) => {
   return (
     <Container>
       <div id="signupbody" className="bg-white">
-        <h2 className="logintab  position-relative">
+        <h2 className="logintab2  position-relative">
           <Button
             variant="link"
             onClick={() => props.history.push(ROUTES.LOGIN)}
