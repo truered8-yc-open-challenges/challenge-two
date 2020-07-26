@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Account from "./Account";
 import { withRouter } from "react-router-dom";
@@ -52,53 +51,51 @@ const Header = (props) => {
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.STORE)}
-              className="text-secondary shadow-none p-sm-1"
+              className="text-secondary shadow-none py-sm-1 px-sm-2"
             >
               Home
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.LOGOUT)}
-              className="text-secondary shadow-none p-sm-1"
+              className="text-secondary shadow-none py-sm-1 px-sm-2"
             >
               Logout
             </Button>
           </Nav>
         ) : (
-          <Nav className="mr-auto">
+          <Nav className="">
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.STORE)}
-              className="text-secondary shadow-none p-sm-1"
+              className="text-secondary shadow-none py-sm-1 px-sm-2"
             >
               Home
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.LOGIN)}
-              className="text-secondary shadow-none p-sm-1"
+              className="text-secondary shadow-none py-sm-1 px-sm-2"
             >
               Login
             </Button>
             <Button
               variant="link"
               onClick={() => props.history.push(ROUTES.SIGNUP)}
-              className="text-secondary shadow-none p-sm-1"
+              className="text-secondary shadow-none py-sm-1 px-sm-2"
             >
-              Sign Up
+              Signup
             </Button>
           </Nav>
         )}
-        <Form inline className="w-50">
-          <FormControl
-            type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search prizes..."
-            className="mx-sm-4 w-100 not-rounded border-white shadow"
-            id="navbar-search"
-          />
-        </Form>
+        <FormControl
+          id="search-bar"
+          type="text"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search prizes..."
+          className="mx-auto mx-sm-4 not-rounded border-white shadow"
+        />
         <Account />
       </Navbar.Collapse>
     </Navbar>
