@@ -19,9 +19,14 @@ const Account = (props) => {
 
   const { userData } = useContext(UserContext);
 
+  const isMobile = window.screen.width <= 768;
+
   if (userData) {
     return (
-      <div id="account" className="w-25 p-sm-2 bg-white shadow">
+      <div
+        id="account"
+        className={`w-${isMobile ? "100" : "25"} p-sm-2 bg-white shadow`}
+      >
         <PromotionModal show={showEvent} handleClose={handleClose} />
         <Button
           variant="primary"
@@ -55,7 +60,7 @@ const Account = (props) => {
           <Button
             id="points"
             onClick={() => setShowPopover(!showPopover)}
-            className="p-sm-1 mb-sm-1 rounded-circle"
+            className={`${!isMobile && "p-sm-1 mb-sm-1"} rounded-circle`}
           >
             {userData["points"]}
           </Button>
@@ -67,7 +72,9 @@ const Account = (props) => {
     <Button
       variant="link"
       onClick={() => props.history.push(ROUTES.LOGIN)}
-      className="text-secondary w-25 p-sm-2 bg-white shadow border-0"
+      className={`text-secondary w-${
+        isMobile ? "100 mt-sm-5" : "25"
+      } p-sm-2 bg-white shadow border-0`}
     >
       Log in
     </Button>

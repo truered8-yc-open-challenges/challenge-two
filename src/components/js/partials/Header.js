@@ -18,6 +18,8 @@ const Header = (props) => {
   const { userData } = useContext(UserContext);
   const { query, setQuery } = useContext(SearchContext);
 
+  const isMobile = window.screen.width < 768;
+
   return (
     <Navbar
       collapseOnSelect
@@ -94,7 +96,9 @@ const Header = (props) => {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search prizes..."
-          className="mx-auto mx-sm-4 not-rounded border-white shadow"
+          className={`mx-auto mx-sm-4 ${
+            isMobile && "mb-sm-5"
+          } not-rounded border-white shadow`}
         />
         <Account />
       </Navbar.Collapse>
