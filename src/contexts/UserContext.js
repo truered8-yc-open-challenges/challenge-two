@@ -32,7 +32,6 @@ export default (props) => {
     );
   };
   const initUserData = () => {
-    console.log(userData);
     if (userData) {
       fetch(`https://api.youthcomputing.ca/users/${userData["id"]}`)
         .then((response) => response.json())

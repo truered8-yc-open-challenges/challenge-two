@@ -29,18 +29,26 @@ const Store = (props) => {
       ).then((response) => response.json());
       return <Prizes prizeList={prizesJson["prizes"]} />;
     };
-    getPromotion().then((response) => {
-      _setPromotion(response);
-    });
-    getPrizes().then((response) => {
-      _setPrizes(response);
-    });
+    getPromotion()
+      .then((response) => {
+        _setPromotion(response);
+      })
+      .catch(() => {
+        window.location = "/";
+      });
+    getPrizes()
+      .then((response) => {
+        _setPrizes(response);
+      })
+      .catch(() => {
+        window.location = "/";
+      });
   }, []);
   return (
     <div id="store" className="mt-0 pb-sm-3">
       <LoadingOverlay
         active={!(promotion && prizes)}
-        spinner /* ={<img src={Logo} alt="YouthComputing logo" />} */
+        spinner
         text="Loading store..."
       >
         {promotion ? promotion : <div>Loading promotion...</div>}
