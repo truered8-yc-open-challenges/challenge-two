@@ -174,7 +174,7 @@ const Signup = (props) => {
             id="pwd2signup"
             value={confirm}
             onChange={(event) => _setConfirm(event.target.value)}
-            placeholder="  Enter password again here..."
+            placeholder="  Enter password here..."
             className="accountinput-s accountinput position-relative"
             name="pwd2signup"
           ></input>

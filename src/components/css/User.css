@@ -1,12 +1,21 @@
 #loginbody,
 #signupbody,
 #logout {
-  position: absolute;
-  top: 15%;
-  width: 60%;
-  height: auto;
-  left: 20%;
+  width: 100%;
+  margin-top: 1%;
+  font-family: Abel;
   box-shadow: 0.2604vw 0vw 0.2604vw 0.2604vw rgba(0, 0, 0, 0.25);
+}
+@media only screen and (min-width: 768px) {
+  #loginbody,
+  #signupbody,
+  #logout {
+    position: absolute;
+    top: 15%;
+    width: 60%;
+    height: auto;
+    left: 20%;
+  }
 }
 
 .logintab,
@@ -56,44 +65,46 @@
   line-height: 4.166vw;
   letter-spacing: -0.015em;
 }
+@media only screen and (max-width: 768px) {
+  .logintab,
+  .logintab Button,
+  .logintab2,
+  .logintab2 Button,
+  .signuptab,
+  .signuptab Button,
+  .horizontal-line,
+  .horizontal-line2 {
+    display: none;
+  }
+}
 
 .accountlabel-f {
   margin-top: 1%;
   margin-left: 8%;
-  font-family: Abel;
-  font-size: 1.9vw;
-  line-height: 2.53vw;
-  letter-spacing: -0.015em;
 }
 .accountlabel-l {
   margin-top: 1%;
   margin-left: 35%;
-  font-family: Abel;
-  font-size: 1.9vw;
-  line-height: 2.53vw;
-  letter-spacing: -0.015em;
 }
 .accountinput-s {
+  font-size: 12px;
   width: 40%;
-  height: 2.3vw;
-  padding: 0.5vw;
   margin-top: 1%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
+  border-radius: 0.65vh;
   box-sizing: border-box;
-  border-radius: 0.65vw;
 }
-
 .accountinput-l {
+  font-size: 12px;
   width: 86.6%;
-  height: 2.3vw;
   margin-top: 1%;
   margin-left: 6.6%;
   background: #ffffff;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
+  border-radius: 0.65vh;
   box-sizing: border-box;
-  border-radius: 0.65vw;
 }
 .accountinput {
   outline: none;
@@ -102,57 +113,86 @@
   font-family: Chivo;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.86vw;
-  line-height: 1vw;
+  font-size: 10px;
   letter-spacing: -0.015em;
   color: rgba(0, 0, 0, 0.3);
+}
+@media only screen and (min-width: 768px) {
+  .accountlabel-f {
+    font-size: 1.9vw;
+    line-height: 2.53vw;
+    letter-spacing: -0.015em;
+  }
+  .accountlabel-l {
+    font-size: 1.9vw;
+    line-height: 2.53vw;
+    letter-spacing: -0.015em;
+  }
+  .accountinput-s {
+    font-size: 1.5vw;
+    height: 2.3vw;
+    padding: 0.5vw;
+    border-radius: 0.65vw;
+  }
+  .accountinput-l {
+    font-size: 1.5vw;
+    height: 2.3vw;
+    border-radius: 0.65vw;
+  }
+  .accountinput::placeholder {
+    font-size: 0.86vw;
+    line-height: 1vw;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.3);
+  }
 }
 #remember-me {
   margin-left: 6.6%;
   margin-right: 0.5%;
   margin-top: 2%;
 }
-#remember-label {
-  font-family: Abel;
-}
+
 .enterbtn {
   width: 70%;
-  height: 2.3vw;
+  height: 3.8vh;
   margin-left: 15%;
   margin-top: 2%;
   margin-bottom: 5%;
   background: #333333;
   border: 0.0651vw solid rgba(0, 0, 0, 0.8);
+  border-radius: 0.65vh;
   box-sizing: border-box;
-  border-radius: 0.65vw;
-  transition: box-shadow 250ms;
 }
 .enterbtn:hover {
   box-shadow: 0 0.78vw 1.04vw 0 rgba(0, 0, 0, 0.24),
     0 1.106vw 3.25vw 0 rgba(0, 0, 0, 0.19);
 }
-
 .enterbtn p {
-  font-family: Abel;
   font-style: normal;
   font-weight: normal;
-  font-size: 2vw;
-  line-height: 1.8vw;
+  font-size: 2.5vh;
   text-align: center;
-  letter-spacing: -0.015em;
 }
+@media only screen and (min-width: 768px) {
+  .enterbtn {
+    height: 2.3vw;
+    border-radius: 0.65vw;
+    transition: box-shadow 250ms;
+  }
+  .enterbtn p {
+    font-size: 2vw;
+    line-height: 1.8vw;
+    letter-spacing: -0.015em;
+  }
+}
+
 #show,
 #show2,
 #show3 {
   cursor: pointer;
-  font-family: Abel;
-  font-style: normal;
   font-weight: normal;
   font-style: italic;
-  font-size: 1.5vw;
-  line-height: 1.8vw;
-  letter-spacing: -0.015em;
-
+  font-size: 10px;
   opacity: 0.5;
   z-index: 2;
   transition: opacity 250ms;
@@ -164,7 +204,7 @@
   opacity: 1;
 }
 #show {
-  margin-left: -53%;
+  margin-left: -54%;
   width: 6%;
   display: inline-block;
   margin-bottom: -2%;
@@ -175,21 +215,33 @@
   display: inline-block;
 }
 #show3 {
-  margin-left: -6%;
+  margin-left: -7%;
   width: 6%;
   display: inline-block;
   margin-bottom: -2%;
 }
-
-#logout Button {
-  font-size: 2.1vw;
-  letter-spacing: -0.015em;
+@media only screen and (min-width: 768px) {
+  #show {
+    margin-left: -53%;
+  }
+  #show2 {
+    margin-left: 41%;
+  }
+  #show3 {
+    margin-left: -6%;
+  }
+  #show,
+  #show2,
+  #show3 {
+    font-size: 1.5vw;
+    line-height: 1.8vw;
+    letter-spacing: -0.015em;
+  }
 }
 
-#forgot-pw-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+@media only screen and (min-width: 768px) {
+  #logout Button {
+    font-size: 2.1vw;
+    letter-spacing: -0.015em;
+  }
 }

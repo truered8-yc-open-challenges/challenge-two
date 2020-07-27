@@ -25,7 +25,7 @@ const Logout = (props) => {
   useEffect(logUserOut, []);
 
   return (
-    <div id="logout" className="bg-white text-center">
+    <div id="logout" className="position-relative bg-white text-center">
       <div id="logout-heading" className="p-sm-3 pt-sm-5">
         {message}
       </div>
